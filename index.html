@@ -1,0 +1,69 @@
+<!--
+
+Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Oliver Jowett <oliver@mutability.co.uk> and Xforce30164
+
+//-->
+
+<html>
+	<head>
+		<meta http-equiv="refresh" content="60">
+		<title> Collectd Dump1090 Graphs</title>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript">
+			var base_name = "dump1090-rpi";
+		
+			function switchView(time_name){
+				<!-- Compose picture names //-->
+				$("#rate").attr("src", base_name + "-rate-" + time_name + ".png");
+				$("#acs").attr("src", base_name + "-acs-" + time_name + ".png");
+				$("#cpu").attr("src", base_name + "-cpu-" + time_name + ".png");
+				$("#tracks").attr("src", base_name + "-tracks-" + time_name + ".png");
+				$("#range").attr("src", base_name + "-range-" + time_name + ".png");
+				$("#mem").attr("src", base_name + "-memory-" + time_name + ".png");
+				$("#signal").attr("src", base_name + "-signal-" + time_name + ".png");
+				$("#net").attr("src", base_name +"-eth0-" + time_name + ".png");
+				$("#disk").attr("src", base_name +"-disk-" + time_name + ".png"); 
+			}
+		</script>
+	</head>	
+	<body>
+	<!-- Button bar //-->
+	<p>
+		<!-- Select period //-->
+		<a href="#" onclick="switchView('1h')">[ hour ]</a>
+     		<a href="#" onclick="switchView('6h')">[ 6 hour ]</a>
+	 	<a href="#" onclick="switchView('24h')">[ day ]</a> 
+		<a href="#" onclick="switchView('2d')">[ 2days ]</a> 
+		<a href="#" onclick="switchView('3d')">[ 3days ]</a> 
+		<a href="#" onclick="switchView('7d')">[ week ]</a> 
+		<a href="#" onclick="switchView('30d')">[ month ]</a> 
+		<a href="#" onclick="switchView('365d')">[ year ]</a> 
+
+		<!-- Links to other dump1090 instances //-->
+		<span><a href="http://ted1090-1/collectd" title="http://ted1090-1/collectd (192.168.11.44)">[ ted1090-1/collectd ]</a></span>
+		<span><a href="http://ted1090-1/dump1090" title="http://ted1090-1/dump1090 (192.168.11.44)">[ ted1090-1/dump1090 ]</a></span>
+		<span><a href="http://ted1090-2/collectd" title="http://ted1090-2/collectd (192.168.11.34)">[ ted1090-2/collectd ]</a></span>
+		<span><a href="http://ted1090-2/dump1090" title="http://ted1090-2/dump1090 (192.168.11.34)">[ ted1090-2/dump1090 ]</a></span>
+		<span><a href="http://ted1090-3/collectd" title="http://ted1090-3/collectd (192.168.11.32)">[ ted1090-3/collectd ]</a></span>
+		<span><a href="http://ted1090-3/dump1090" title="http://ted1090-3/dump1090 (192.168.11.32)">[ ted1090-3/dump1090 ]</a></span>
+		<span><a href="http://ted1090-4/collectd" title="http://ted1090-4/collectd (192.168.11.8)" >[ ted1090-4/collectd ]</a></span>
+		<span><a href="http://ted1090-4/dump1090" title="http://ted1090-4/dump1090 (192.168.11.8)" >[ ted1090-4/dump1090 ]</a></span>
+	</p>
+	<!-- Display picures //-->
+	<div style="width: 1900px; height: 300px;">
+		<img id="cpu"    width="630" height="300" src="dump1090-rpi-cpu-24h.png">
+		<img id="rate"   width="630" height="300" src="dump1090-rpi-rate-24h.png">
+		<img id="signal" width="630" height="300" src="dump1090-rpi-signal-24h.png">
+	</div>
+	<div style="width: 1900px; height: 300px;">	
+		<img id="mem"    width="630" height="300" src="dump1090-rpi-memory-24h.png">
+		<img id="acs"    width="630" height="300" src="dump1090-rpi-acs-24h.png">
+		<img id="range"  width="630" height="300" src="dump1090-rpi-range-24h.png">
+	</div>
+	<div style="width: 1900px; height: 300px;">	
+		<img id="net"    width="630" height="300" src="dump1090-rpi-eth0-24h.png">
+		<img id="tracks" width="630" height="300" src="dump1090-rpi-tracks-24h.png">
+		<img id="disk"   width="630" height="300" src="dump1090-rpi-disk-24h.png">
+	</div>
+	</body>
+</html>
