@@ -107,5 +107,9 @@ sudo crontab -e
 # More info
 
 http://discussions.flightaware.com/post166863.html#p166863
+
 http://forum.planefinder.net/threads/web-portal-and-collectd-rrd-graphs-automated-installation.256
 
+https://collectd.org
+
+http://oss.oetiker.ch/rrdtool
