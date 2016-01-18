@@ -5,14 +5,16 @@
 
 # Usage: make-graphs.sh <periode> [<steps>]
 # For example:
-# make-graphs.sh 1h 
-# make-graphs.sh 6h 
-# make-graphs.sh 24h
-# make-graphs.sh 2d 
-# make-graphs.sh 3d 
-# make-graphs.sh 7d 
-# make-graphs.sh 30d 
-# make-graphs.sh 365d 
+# make-graphs.sh 1h    8
+# make-graphs.sh 6h    45
+# make-graphs.sh 24h   180
+# make-graphs.sh 2d    360
+# make-graphs.sh 3d    540
+# make-graphs.sh 7d    1260
+# make-graphs.sh 14d   2520
+# make-graphs.sh 30d   5400
+# make-graphs.sh 90d   10800
+# make-graphs.sh 365d  68400
 
 renice -n 5 -p $$
 
