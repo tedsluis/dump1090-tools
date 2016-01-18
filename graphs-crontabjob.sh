@@ -17,13 +17,14 @@ RefreshGraph(){
         if [ -z "$file" ]; then
                 echo "create $filemask,  step=$step"
         else
-                if [ -f $file ] && [ `stat --format=%Y $file` -le $(( `date +%s` - $seconds )) ]; then
-                        echo "refresh $filemask,  step=$step,  expired=$seconds."
+		expire=$(expr $((`stat --format=%Y $file`)) - $(( `date +%s` - $seconds )))
+                if [ -f $file ] && [ $expire -le 0 ]; then
+                        echo "refresh $filemask,  step=$step,  expired=$expire, expired_after=$seconds."
                 else
                         if [ ! -f $file ]; then
                                 echo "create $filemask,  step=$step,  file does not exists?!"
                         else
-                                echo "not expired=$filemask,  step=$step,  expired=$seconds."
+                                echo "not expired=$filemask,  step=$step,  expired=$expire, expired_after=$seconds."
 				return
                         fi
                 fi
