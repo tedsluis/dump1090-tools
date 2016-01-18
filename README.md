@@ -314,7 +314,7 @@ total 3164
 -rw-r--r-- 1 root root 95931 Apr 15  2015 jquery.js
 
 ````
-View the graphs in a web browser: http://<ip address your dump1090>/collectd
+View the graphs in a web browser: http://ip address your dump1090/collectd
 
 # More info
 
