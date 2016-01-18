@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # by ted.sluis@gmail.com
 
