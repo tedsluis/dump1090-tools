@@ -1,5 +1,7 @@
 # dump1090-tools for raspberry pi
 
+Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware).
+
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
 alt="dump-tools week view" width="633" height="333" border="10" /></a>
@@ -123,3 +125,5 @@ http://forum.planefinder.net/threads/web-portal-and-collectd-rrd-graphs-automate
 https://collectd.org
 
 http://oss.oetiker.ch/rrdtool
+
+ted.sluis@gmail.com
