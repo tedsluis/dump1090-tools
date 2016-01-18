@@ -16,23 +16,22 @@ RefreshGraph(){
         # Create file if not exists or refresh file when is to old.
         if [ -z "$file" ]; then
                 echo "create $filemask,  step=$step"
-                sudo /home/pi/dump-tools/collectd/make-graphs.sh $period $step
         else
                 if [ -f $file ] && [ `stat --format=%Y $file` -le $(( `date +%s` - $seconds )) ]; then
                         echo "refresh $filemask,  step=$step,  expired=$seconds."
-                        sudo /home/pi/dump-tools/collectd/make-graphs.sh $period $step
                 else
                         if [ ! -f $file ]; then
                                 echo "create $filemask,  step=$step,  file does not exists?!"
-                                sudo /home/pi/dump-tools/collectd/make-graphs.sh $period $step
                         else
                                 echo "not expired=$filemask,  step=$step,  expired=$seconds."
+				return
                         fi
                 fi
         fi
+        sudo /home/pi/dump-tools/collectd/make-graphs.sh $period $step
 }
 
-# RefreshGraph(<refresh after x seconds>,<periode>,<steps>)
+# RefreshGraph "<refresh after x seconds>," "<periode>" "<steps>"
 RefreshGraph "300"   "1h"   "8"
 RefreshGraph "300"   "6h"   "45"
 RefreshGraph "600"   "24h"  "180"
