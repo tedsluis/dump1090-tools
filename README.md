@@ -70,23 +70,23 @@ Available graphs:
 # Manual installation 
 
 Install the collectd package:
-
+````
 $ sudo apt-get install -y collectd
-
+````
 Download the files and copy them to the following directories:
 
 /etc/collectd/
-            collectd.conf
+* collectd.conf
 
 /var/www/collectd/
-            index.html
-            jquery.js
+* index.html
+* jquery.js
 
 /home/pi/dump-tools/collectd/
-            dump1090.db
-            dump1090.py
-            graphs-crontabjob.sh
-            make-graphs.sh
+* dump1090.db
+* dump1090.py
+* graphs-crontabjob.sh
+* make-graphs.sh
 
 ````
 $ sudo wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collectd.conf   -O /etc/collectd/collectd.conf
@@ -99,21 +99,21 @@ $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-gra
 ````
 
 Set execute permission on scripts:
-
+````
 $ sudo chmod 775 /home/pi/dump-tools/collectd/*.sh
-
+````
 Start the collection deamon:
-
+````
 $ sudo /etc/init.d/collectd restart
-
+````
 Create a crontab entery that will launch the script that creates the graphs.
 The script takes care of the refresh frequency. The hourly graphs will be refreshed every 5 minutes.
 Weekly en monthly graphs will only be refresh a few times a day.
 
 $ sudo crontab -e
-
+````
 */5 * * * *              sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh > /dev/null
-
+````
 # More info
 
 http://discussions.flightaware.com/post166863.html#p166863
