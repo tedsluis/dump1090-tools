@@ -71,7 +71,7 @@ Available graphs:
 
 Install the collectd package:
 
-sudo apt-get install -y collectd
+$ sudo apt-get install -y collectd
 
 Download the files and copy them to the following directories:
 
@@ -88,19 +88,29 @@ Download the files and copy them to the following directories:
             graphs-crontabjob.sh
             make-graphs.sh
 
+````
+$ sudo wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collectd.conf   -O /etc/collectd/collectd.conf
+$ sudo wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/index.html      -O /var/www/collectd/index.html
+$ sudo wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/jquery.js       -O /var/www/collectd/jquery.js
+$ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.db          -O /home/pi/dump-tools/collectd/dump1090.db
+$ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py          -O /home/pi/dump-tools/collectd/dump1090.py
+$ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh -O /home/pi/dump-tools/collectd/graphs-crontabjob.sh
+$ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-graphs.sh       -O /home/pi/dump-tools/collectd/make-graphs.sh
+````
+
 Set execute permission on scripts:
 
-sudo chmod 775 /home/pi/dump-tools/collectd/*.sh
+$ sudo chmod 775 /home/pi/dump-tools/collectd/*.sh
 
 Start the collection deamon:
 
-sudo /etc/init.d/collectd restart
+$ sudo /etc/init.d/collectd restart
 
 Create a crontab entery that will launch the script that creates the graphs.
 The script takes care of the refresh frequency. The hourly graphs will be refreshed every 5 minutes.
 Weekly en monthly graphs will only be refresh a few times a day.
 
-sudo crontab -e
+$ sudo crontab -e
 
 */5 * * * *              sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh > /dev/null
 
