@@ -118,7 +118,7 @@ $ sudo crontab -e
 ````
 # Testing and troubleshooting
 
-Give collectd at least few minutes to collect some data. Check whether the rrd file are updated:
+Give collectd at least few minutes to collect some data. Check whether the rrd files (the round robin databases with collection data) are updated:
 ````
 pi@ted1090-4 ~/dump-tools/collectd $ ll -R /var/lib/collectd/rrd/* | grep rrd
 /var/lib/collectd/rrd/localhost:
@@ -169,7 +169,7 @@ root      2255     1  0 Jan17 ?        00:00:00 /usr/sbin/collectdmon -P /var/ru
 root      2257  2255  0 Jan17 ?        00:01:45 collectd -C /etc/collectd/collectd.conf -f
 pi       32085  2366  0 11:11 pts/0    00:00:00 grep --color=auto collectd
 ````
-Or check the '/var/log/collectd.log' for error messages.
+Or check the '/var/log/collectd.log' and fix the error messages.
 
 Run the 'graphs-crontabjob.sh' script from the '/home/pi/dump-tools/collectd/' directory and view the progress. It checks whether the graphs need to be updated:
 ````
