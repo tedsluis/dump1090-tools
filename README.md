@@ -118,7 +118,7 @@ $ sudo crontab -e
 ````
 # Automatic install
 Download the installer and launch it. The installer will:
-* Create directory (with the permissions of the parent directory).
+* Create directories (with the permissions of the parent directory).
 * Download the files and copy them with the correct permissions to the target directories.
 * Run as 'pi' user and use 'root' whenever if needed.
 * Install 'collectd' and start it.
