@@ -162,5 +162,5 @@ sudo /etc/init.d/collectd restart
 
 # create graphs for the first time
 echo "==============CREATE GRAPHS======================================"
-/home/pi/dump-tools/graphs-crontabjob.sh
+/home/pi/dump-tools/collectd/graphs-crontabjob.sh
 
