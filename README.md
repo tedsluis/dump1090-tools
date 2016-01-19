@@ -117,7 +117,7 @@ $ sudo crontab -e
 */5 * * * *              sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh > /dev/null
 ````
 # Automatic install
-Download the [installer(https://github.com/tedsluis/dump1090-tools/blob/master/dump1090-tools-install.sh)](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh) and launch it. The installer will:
+Download the [installer (dump1090-tools-install.sh)](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh) and launch it. The installer will:
 * Create directories (with the permissions of the parent directory).
 * Create backup files whenever existing files are updated.
 * Download the files and copy them with the correct permissions to the target directories.
