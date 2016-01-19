@@ -116,6 +116,40 @@ $ sudo crontab -e
 ````
 */5 * * * *              sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh > /dev/null
 ````
+# Automatic install
+Download the installer and launch it. The installer will:
+* Create directory (with the permissions of the parent directory).
+* Download the files and copy them with the correct permissions to the target directories.
+* Run as 'pi' user and use 'root' whenever if needed.
+* Install 'collectd' and start it.
+* Add the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
+* Create graphs for the first time.
+
+Perform the following steps:
+````
+pi@ted1090-4 ~ $ cd /tmp
+pi@ted1090-4 /tmp $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh
+--2016-01-19 22:20:38--  https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 23.235.43.133
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|23.235.43.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 6767 (6.6K) [text/plain]
+Saving to: `dump1090-tools-install.sh'
+
+100%[===========================================================================>] 6,767       --.-K/s   in 0s      
+
+2016-01-19 22:20:42 (22.1 MB/s) - `dump1090-tools-install.sh' saved [6767/6767]
+
+pi@ted1090-4 /tmp $ chmod +x dump1090-tools-install.sh
+pi@ted1090-4 /tmp $ ./dump1090-tools-install.sh
+This script is launched by user pi.
+==============INSTALL:[collectd]=================================
+install ok installed 5.1.0-3
+Collect install ok installed 5.1.0-3
+etc........
+````
+Finished!
+
 # Testing and troubleshooting
 
 Give collectd at least few minutes to collect some data. Check whether the rrd files (the round robin databases with collection data) are updated:
