@@ -1,9 +1,15 @@
 #!/bin/bash
 
-# by ted.sluis@gmail.com
+# This script schedules the creation of graphs. Not every graph type must be updated every 5 minutes.
+# Graphs that views a hourly or 6 hourly period will be updated every 5 minutes, but other graphs will
+# be refreshed less frequently.
+#
+# Everytime this script runs it checks how long ago a graph was updated. Depending on the period type
+# it will be refreshed less often.
+
+# By ted.sluis@gmail.com
 
 # Create graphs if not exists or refresh them after they are to old.
-
 RefreshGraph(){
         seconds=$1 # refresh after x seconds
         period=$2  # graph period
