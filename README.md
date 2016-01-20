@@ -1,6 +1,7 @@
-# dump1090-tools for raspberry pi
+# dump1090-tools for raspberry pi.
 
 Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware).
+Including a installer.
 
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
@@ -69,7 +70,7 @@ alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
 Available graphs:
 1 hour, 6 hour, 24 hour, 7 days, 14 days, 30 days, 90 days, 365 days
 
-# Manual installation 
+# Manual installation. 
 
 Install the collectd package:
 ````
@@ -116,18 +117,18 @@ $ sudo crontab -e
 ````
 */5 * * * *              sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh > /dev/null
 ````
-# Automatic install
+# Installation using installer.
 Download the [installer (dump1090-tools-install.sh)](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh) and launch it. The installer will:
 * Create directories (with the permissions of the parent directory).
-* Create backup files whenever existing files are updated.
 * Download the files and copy them with the correct permissions to the target directories.
+* Create backup files whenever existing files are updated.
 * Run as 'pi' user and use 'root' whenever if needed.
 * Install 'collectd' and start it.
 * Add the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
 * A copy of the original crontab is saved.
 * Create graphs for the first time.
 
-Perform the following steps:
+Perform the following steps to install the dump-tools:
 ````
 pi@ted1090-4 ~ $ cd /tmp
 pi@ted1090-4 /tmp $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh
@@ -142,7 +143,7 @@ etc........
 ````
 Finished!
 
-# Testing and troubleshooting
+# Testing and troubleshooting.
 
 Give collectd at least few minutes to collect some data. Check whether the rrd files (the round robin databases with collection data) are updated:
 ````
@@ -342,7 +343,7 @@ total 3164
 ````
 View the graphs in a web browser: http://ip address your dump1090/collectd
 
-# More info
+# More info.
 
 http://discussions.flightaware.com/post166863.html#p166863
 
