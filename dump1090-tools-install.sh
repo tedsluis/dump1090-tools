@@ -181,6 +181,6 @@ echo "==============CREATE GRAPHS======================================"
 
 # Edit /etc/lighttpd/lighttpd.conf
 echo "==============EDIT:[/etc/lighttpd/lighttpd.conf]================="
-echo "execute (root): sed -i '/server.document-root.*/server.document-root        = \"\var/www\"/g' /etc/lighttpd/lighttpd.conf"
+echo "execute (root): sed -i 's/server.document-root.*/server.document-root        = \"/var/www\"/g' /etc/lighttpd/lighttpd.conf"
 sudo sed -i '/server.document-root.*/server.document-root        = \"\/var\/www\"/g' "/etc/lighttpd/lighttpd.conf"
 
