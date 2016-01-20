@@ -1,11 +1,24 @@
 #!/bin/bash
 
-# Installs collectd for dump1090 mutability on raspbian
+# Installs dump-tools, collectd for dump1090 mutability on raspbian.
+# The installer will:
+# - create directories (with the permissions of the parent directory).
+# - download the files and copy them with the correct permissions to the target directories.
+# - create backup files whenever existing files are updated.
+# - run as 'pi' user and use 'root' whenever if needed.
+# - install 'collectd' and start it.
+# - add the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
+# - a copy of the original crontab is saved.
+# - create graphs for the first time.
+#
+# Must be launched as user 'pi'.
+#
 # By ted.sluis@gmail.com
 
 # Default user
 user="pi"
 
+# Test user.
 if [ "x${user}" = "x${USER}" ]; then
 	echo "This script is launched by user $USER."
 else 
@@ -130,7 +143,9 @@ GETFILE(){
 	CHANGEPERMISSIONS "$targetfile" "$permission" "$owner" "$group"
 }
 
-# Download files, save in target directories and set permissions
+# Download files, save in target directories and set permissions.
+# Directories will be created with the same permissions, owner and group like the parent directories.
+# Files will get the specified permissions.
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collectd.conf"        "/etc/collectd/collectd.conf"                       "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/index.html"           "/var/www/collectd/index.html"                      "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/jquery.js"            "/var/www/collectd/jquery.js"                       "644"
