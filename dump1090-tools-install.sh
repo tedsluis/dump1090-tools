@@ -181,6 +181,10 @@ echo "==============CREATE GRAPHS======================================"
 
 # Edit /etc/lighttpd/lighttpd.conf, change /var/www/html into /var/www
 echo "==============EDIT:[/etc/lighttpd/lighttpd.conf]================="
-echo "execute (root): sed -i 's/server.document-root.*/server.document-root        = \"/var/www\"/g' /etc/lighttpd/lighttpd.conf"
+echo "execute (root): sudo sed -i 's/server.document-root.*/server.document-root        = \"/var/www\"/g' /etc/lighttpd/lighttpd.conf"
 sudo sed -i 's/server.document-root.*/server.document-root        = \"\/var\/www\"/g' "/etc/lighttpd/lighttpd.conf"
+# Reload lighttpd web server
+echo "==============RELOAD:[lighttpd]=================================="
+echo "execute (root): sudo /etc/init.d/lighttpd force-reload"
+sudo /etc/init.d/lighttpd force-reload
 
