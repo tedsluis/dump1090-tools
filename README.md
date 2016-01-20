@@ -143,6 +143,10 @@ etc........
 ````
 Finished!
 
+Watch the installation video:
+
+[![dump-tools installation](http://img.youtube.com/vi/f9nL8gxL388/3.jpg)](https://www.youtube.com/watch?v=f9nL8gxL388)
+
 # Testing and troubleshooting.
 
 Give collectd at least few minutes to collect some data. Check whether the rrd files (the round robin databases with collection data) are updated:
