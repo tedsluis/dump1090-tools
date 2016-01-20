@@ -145,9 +145,7 @@ Finished!
 
 Watch the installation video:
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=f9nL8gxL388
-" target="_blank"><img src="http://img.youtube.com/vi/f9nL8gxL388/3.jpg" 
-alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" /></a>
+[[youtube-{f9nL8gxL388}-{480}x{360}]]
 
 # Testing and troubleshooting.
 
