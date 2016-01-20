@@ -145,7 +145,7 @@ Finished!
 
 Watch the installation video:
 
-[[youtube-{f9nL8gxL388}-{480}x{360}]]
+[![dump-tools installation](http://img.youtube.com/vi/f9nL8gxL388/3.jpg)](http://www.youtube.com/watch?v=f9nL8gxL388)
 
 # Testing and troubleshooting.
 
