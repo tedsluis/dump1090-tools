@@ -179,7 +179,7 @@ sudo /etc/init.d/collectd restart
 echo "==============CREATE GRAPHS======================================"
 /home/pi/dump-tools/collectd/graphs-crontabjob.sh
 
-# Edit /etc/lighttpd/lighttpd.conf
+# Edit /etc/lighttpd/lighttpd.conf, change /var/www/html into /var/www
 echo "==============EDIT:[/etc/lighttpd/lighttpd.conf]================="
 echo "execute (root): sed -i 's/server.document-root.*/server.document-root        = \"/var/www\"/g' /etc/lighttpd/lighttpd.conf"
 sudo sed -i 's/server.document-root.*/server.document-root        = \"\/var\/www\"/g' "/etc/lighttpd/lighttpd.conf"
