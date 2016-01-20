@@ -145,7 +145,9 @@ Finished!
 
 Watch the installation video:
 
-[![dump-tools installation](http://img.youtube.com/vi/f9nL8gxL388/3.jpg)](https://www.youtube.com/watch?v=f9nL8gxL388)
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=f9nL8gxL388
+" target="_blank"><img src="http://img.youtube.com/vi/f9nL8gxL388/3.jpg" 
+alt="IMAGE ALT TEXT HERE" width="480" height="360" border="10" /></a>
 
 # Testing and troubleshooting.
 
