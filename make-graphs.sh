@@ -3,6 +3,8 @@
 # By ted.sluis@gmail.com
 # Based on dump1090-tools (https://github.com/mutability/dump1090-tools) by mutability and addons by Xforce30164.
 
+# Creates graphs using rrdtool.
+
 # Usage: make-graphs.sh <periode> [<steps>]
 # For example:
 # make-graphs.sh 1h    8
