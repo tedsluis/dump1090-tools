@@ -117,6 +117,21 @@ $ sudo crontab -e
 ````
 */5 * * * *              sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh > /dev/null
 ````
+
+Change web server root from /var/www/html into /var/www:
+
+````
+sudo sed -i 's/server.document-root.*/server.document-root        = \"\/var\/www\"/g' "/etc/lighttpd/lighttpd.conf"
+````
+
+Restart lighthttp web server:
+
+````
+sudo /etc/init.d/lighttpd force-reload
+````
+
+Finished!
+
 # Installation using installer.
 Download the [installer (dump1090-tools-install.sh)](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh) and launch it. The installer will:
 * Create directories (with the permissions of the parent directory).
@@ -145,7 +160,7 @@ Finished!
 
 Watch the installation video:
 
-[![dump-tools installation](http://img.youtube.com/vi/f9nL8gxL388/3.jpg)](http://www.youtube.com/watch?v=f9nL8gxL388)
+[![dump-tools installation](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/youtube-dump-tools.png)](http://www.youtube.com/watch?v=f9nL8gxL388)
 
 # Testing and troubleshooting.
 
@@ -343,7 +358,6 @@ total 3164
 -rw-r--r-- 1 root root 24012 Jan 18 10:52 dump1090-rpi-tracks-90d.png
 -rw-r--r-- 1 root root  3308 Oct  3 09:19 index.html
 -rw-r--r-- 1 root root 95931 Apr 15  2015 jquery.js
-
 ````
 View the graphs in a web browser: http://ip address your dump1090/collectd
 
@@ -358,3 +372,5 @@ https://collectd.org
 http://oss.oetiker.ch/rrdtool
 
 ted.sluis@gmail.com
+
+https://www.youtube.com/watch?v=f9nL8gxL388
