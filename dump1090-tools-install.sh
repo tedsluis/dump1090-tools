@@ -60,14 +60,14 @@ CHANGEPERMISSIONS() {
 			chgrp $group $path
 		fi
 	else
-                echo "execute (root): chown $owner $path"
+                echo "execute (root): sudo chown $owner $path"
                 sudo chown $owner $path
 		if [ ! "x${pathpermission}" = "x${permission}" ]; then
 			echo "execute (root): sudo chmod $permission $path (owner=$owner)"
                 	sudo chmod $permission $path
 		fi
 		if [ ! "x${pathgroup}" = "x${group}" ]; then
-			echo "execute (root): chgrp $group $path (owner=$owner)"
+			echo "execute (root): sudo chgrp $group $path (owner=$owner)"
                 	sudo chgrp $group $path 
 		fi
 	fi
@@ -183,6 +183,7 @@ echo "==============CREATE GRAPHS======================================"
 echo "==============EDIT:[/etc/lighttpd/lighttpd.conf]================="
 echo "execute (root): sudo sed -i 's/server.document-root.*/server.document-root        = \"/var/www\"/g' /etc/lighttpd/lighttpd.conf"
 sudo sed -i 's/server.document-root.*/server.document-root        = \"\/var\/www\"/g' "/etc/lighttpd/lighttpd.conf"
+
 # Reload lighttpd web server
 echo "==============RELOAD:[lighttpd]=================================="
 echo "execute (root): sudo /etc/init.d/lighttpd force-reload"
