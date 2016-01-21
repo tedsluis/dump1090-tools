@@ -142,6 +142,7 @@ Download the [installer (dump1090-tools-install.sh)](https://raw.githubuserconte
 * Add the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
 * A copy of the original crontab is saved.
 * Create graphs for the first time.
+* Change the web server root into /var/www and restart the web server.
 
 Perform the following steps to install the dump-tools:
 ````
