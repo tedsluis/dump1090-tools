@@ -21,16 +21,16 @@ RefreshGraph(){
 
         # Create file if not exists or refresh file when is to old.
         if [ -z "$file" ]; then
-                printf "create %20s   step=%5s" "$filemask"  "$step"
+                printf "create %20s   step=%5s\n" "$filemask"  "$step"
         else
 		expire=$(expr $((`stat --format=%Y $file`)) - $(( `date +%s` - $seconds )))
                 if [ -f $file ] && [ $expire -le 0 ]; then
-                        echo "refresh %19s   step=%5s   expired=%5s   expired_after=%5s" "$filemask" "$step" "$expire" "$seconds"
+                        echo "refresh %19s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
                 else
                         if [ ! -f $file ]; then
-                                echo "create %20s   step=%5s   file does not exists?!" "$filemask" "$step"
+                                echo "create %20s   step=%5s   file does not exists?!\n" "$filemask" "$step"
                         else
-                                echo "not expired %16s   step=%5s   expired=%5s   expired_after=%5s" "$filemask" "$step" "$expire" "$seconds"
+                                echo "not expired %16s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
 				return
                         fi
                 fi
