@@ -25,12 +25,12 @@ RefreshGraph(){
         else
 		expire=$(expr $((`stat --format=%Y $file`)) - $(( `date +%s` - $seconds )))
                 if [ -f $file ] && [ $expire -le 0 ]; then
-                        echo "refresh %19s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
+                        printf "refresh %19s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
                 else
                         if [ ! -f $file ]; then
-                                echo "create %20s   step=%5s   file does not exists?!\n" "$filemask" "$step"
+                                printf "create %20s   step=%5s   file does not exists?!\n" "$filemask" "$step"
                         else
-                                echo "not expired %16s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
+                                printf "not expired %16s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
 				return
                         fi
                 fi
