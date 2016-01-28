@@ -221,46 +221,46 @@ Or check the '/var/log/collectd.log' and fix the error messages.
 Run the 'graphs-crontabjob.sh' script from the '/home/pi/dump-tools/collectd/' directory and view the progress. It checks whether the graphs need to be updated:
 ````
 pi@ted1090-4 ~/dump-tools/collectd $ ./graphs-crontabjob.sh
-Refresh dump1090*1h.png             Steps=8         Has been expired for 124 seconds (expiration time is set to 300).          
-31428 (process ID) old priority 0, new priority 5
-779x426
-779x398
-727x384
-727x384
-727x384
-727x412
-779x398
-779x440
-779x412
-Refresh dump1090*6h.png             Steps=45        Has been expired for 125 seconds (expiration time is set to 300).          
-31448 (process ID) old priority 0, new priority 5
-779x426
-779x398
-727x384
-727x384
-727x384
-727x412
-779x398
-779x440
-779x412
-Not yet expired dump1090*24h.png    Steps=180       Will expire after 176 seconds    (expiration time is set to 600).             
-Not yet expired dump1090*2d.png     Steps=360       Will expire after 736 seconds    (expiration time is set to 1200).            
-Not yet expired dump1090*3d.png     Steps=540       Will expire after 627 seconds    (expiration time is set to 1800).            
-Not yet expired dump1090*7d.png     Steps=1260      Will expire after 2553 seconds   (expiration time is set to 3600).           
-Not yet expired dump1090*14d.png    Steps=2520      Will expire after 158 seconds    (expiration time is set to 7200).            
-Not yet expired dump1090*30d.png    Steps=5400      Will expire after 1353 seconds   (expiration time is set to 14400).          
-Refresh dump1090*90d.png            Steps=10800     Has been expired for 163 seconds (expiration time is set to 14400).        
-31504 (process ID) old priority 0, new priority 5
-779x426
-779x398
-727x384
-727x384
-727x384
-727x412
-779x398
-779x440
-779x412
-Not yet expired dump1090*365d.png   Steps=86400     Will expire after 12434 seconds (expiration time is set to 28800). 
+refresh       dump1090*1h.png   step=    8   expired=  -67   expired_after=  300
+11654 (process ID) old priority 0, new priority 5
+      Aircrafts - period=  1h - step=    8 - size=779x426
+      CPU usage - period=  1h - step=    8 - size=779x398
+         tracks - period=  1h - step=    8 - size=727x384
+  Antenna range - period=  1h - step=    8 - size=727x384
+   Signal power - period=  1h - step=    8 - size=727x384
+       messages - period=  1h - step=    8 - size=779x412
+     Network IO - period=  1h - step=    8 - size=727x412
+   Memory usage - period=  1h - step=    8 - size=779x398
+        Disk IO - period=  1h - step=    8 - size=779x440
+refresh       dump1090*6h.png   step=   45   expired=  -68   expired_after=  300
+11676 (process ID) old priority 0, new priority 5
+      Aircrafts - period=  6h - step=   45 - size=779x426
+      CPU usage - period=  6h - step=   45 - size=779x398
+         tracks - period=  6h - step=   45 - size=727x384
+  Antenna range - period=  6h - step=   45 - size=727x384
+   Signal power - period=  6h - step=   45 - size=727x384
+       messages - period=  6h - step=   45 - size=779x412
+     Network IO - period=  6h - step=   45 - size=727x412
+   Memory usage - period=  6h - step=   45 - size=779x398
+        Disk IO - period=  6h - step=   45 - size=779x440
+refresh      dump1090*24h.png   step=  180   expired= -163   expired_after=  600
+11698 (process ID) old priority 0, new priority 5
+      Aircrafts - period= 24h - step=  180 - size=779x426
+      CPU usage - period= 24h - step=  180 - size=779x398
+         tracks - period= 24h - step=  180 - size=727x384
+  Antenna range - period= 24h - step=  180 - size=727x384
+   Signal power - period= 24h - step=  180 - size=727x384
+       messages - period= 24h - step=  180 - size=779x412
+     Network IO - period= 24h - step=  180 - size=727x412
+   Memory usage - period= 24h - step=  180 - size=779x398
+        Disk IO - period= 24h - step=  180 - size=779x440
+not expired   dump1090*2d.png   step=  360   expired=  436   expired_after= 1200
+not expired   dump1090*3d.png   step=  540   expired= 1040   expired_after= 1800
+not expired   dump1090*7d.png   step= 1260   expired= 2841   expired_after= 3600
+not expired  dump1090*14d.png   step= 2520   expired= 6443   expired_after= 7200
+not expired  dump1090*30d.png   step= 5400   expired= 4295   expired_after=14400
+not expired  dump1090*90d.png   step=10800   expired= 4297   expired_after=14400
+not expired dump1090*365d.png   step=86400   expired=18701   expired_after=28800
 ````
 
 View the graphs in the '/var/www/collectd' directory:
