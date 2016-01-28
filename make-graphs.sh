@@ -5,7 +5,7 @@
 
 # Creates graphs using rrdtool.
 
-# Usage: make-graphs.sh <periode> [<steps>]
+# Usage: make-graphs.sh <period> [<steps>]
 # For example:
 # make-graphs.sh 1h    8
 # make-graphs.sh 6h    45
@@ -33,6 +33,7 @@ H=`uname -n`;
 # Antenna range in kilometers.
 # Including a minimal and maximum range.
 metric_range_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "Antenna range" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -64,6 +65,7 @@ metric_range_graph() {
 
 # Signal power, peak signal power and >-3dBFS / hr (RHS).
 signal_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "Signal power" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -92,6 +94,7 @@ signal_graph() {
 
 # local messages received/sec, remote messages received/sec, position / hr (RHS).
 local_rate_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "messages" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -126,6 +129,7 @@ local_rate_graph() {
 
 # Aircraft tracked, aircraft with positions, aircraft with mlat, percentage with positions
 aircraft_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "Aircrafts" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -166,6 +170,7 @@ aircraft_graph() {
 
 # tracks with single message, unique tracks:STACK
 tracks_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "tracks" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -188,6 +193,7 @@ tracks_graph() {
 
 # cpu usage USB, other and demodulator. cpu temp
 cpu_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "CPU usage" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -226,6 +232,7 @@ cpu_graph() {
 
 # Network traffic incomming, outgoining, errors
 net_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "Network IO" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -261,6 +268,7 @@ net_graph() {
 # Memory used, buffered, free and cached.
 # Disk space used and free.
 memory_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "Memory usage" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -302,6 +310,7 @@ memory_graph() {
 
 # Disk IO read and write / throughput read and write
 diskio_ops_graph() {
+  printf "%15s - period=%4s - step=%5s - size=" "Disk IO" "$4" "$5"
   rrdtool graph \
   "$1" \
   --start end-$4 \
