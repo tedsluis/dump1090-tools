@@ -35,6 +35,15 @@ if [[ $check =~ ok ]]; then
 else
         sudo apt-get install -y collectd
 fi
+# RRDTOOL installed?
+echo "==============INSTALL:[rrdtool]================================="
+check=$(dpkg-query -W -f='${Status} ${Version}\n' rrdtool)
+echo $check
+if [[ $check =~ ok ]]; then
+        echo "rrdtool $check"
+else
+        sudo apt-get install -y rrdtool
+fi
 
 # date time string
 now=$(date +"%Y%m%d%H%M%S")
