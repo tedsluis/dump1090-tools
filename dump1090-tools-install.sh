@@ -45,6 +45,16 @@ else
         sudo apt-get install -y rrdtool
 fi
 
+# Pyton2.7 installed?
+echo "==============INSTALL:[python]================================="
+check=$(dpkg-query -W -f='${Status} ${Version}\n' libpython2.7)
+echo $check
+if [[ $check =~ ok ]]; then
+        echo "libpython2.7 $check"
+else
+        sudo apt-get install -y libpython2.7
+fi
+
 # date time string
 now=$(date +"%Y%m%d%H%M%S")
 
