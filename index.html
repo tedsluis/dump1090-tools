@@ -12,7 +12,6 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 
 <html>
 	<head>
-		<meta http-equiv="refresh" content="60">
 		<title> Collectd Dump1090 Graphs</title>
 		<script type="text/javascript" src="jquery.js"></script>
 		<script type="text/javascript">
@@ -30,6 +29,17 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 				$("#net").attr("src", base_name +"-eth0-" + time_name + ".png");
 				$("#disk").attr("src", base_name +"-disk-" + time_name + ".png"); 
 			}
+			setInterval(function(){
+			    $('img').each(function() {
+			        var jqt = $(this);
+			        var src = jqt.attr('src');
+				if (~src.indexOf('?')) {
+				    src = src.substr(0,src.indexOf('?'));
+				}
+			        src += '?_ts=' + new Date().getTime();
+			        jqt.attr('src',src);
+			    });
+			},60000);
 		</script>
 	</head>	
 	<body>
