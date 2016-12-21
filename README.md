@@ -1,77 +1,93 @@
 # dump1090-tools for raspberry pi.
-
+   
+## Table of contents
+   * [dump1090-tools for raspberry pi.](#dump1090-tools-for-raspberry-pi)
+      * [Table of contents](#table-of-contents)
+      * [Credits](#credits)
+      * [Features](#features)
+      * [Manual installation.](#manual-installation)
+      * [Installation using installer.](#installation-using-installer)
+      * [Testing and troubleshooting.](#testing-and-troubleshooting)
+      * [More info.](#more-info)
+   
+## Credits  
+   
+Based on https://github.com/mutability/dump1090-tools by Oliver Jowett <oliver@mutability.co.uk> and Xforce30164.
+  
+## Features  
+  
 Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware).
 Including a installer.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
 alt="dump-tools week view" width="633" height="333" border="10" /></a>
-
-Based on https://github.com/mutability/dump1090-tools by Oliver Jowett <oliver@mutability.co.uk> and Xforce30164.
-
+  
+  
 Collects stats like:
 * number of local & remote messages received per second.
 * number of positions per hour.
-
+    
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/message_rate.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/message_rate.png"
 alt="dump-tools message rate" width="633" height="333" border="10" /></a>
-
+    
 * number of aircraft tracked with position, without position, with mlat.
 * percantage aircraft traked with position.
-
+    
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/aircraftseen.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/aircraftseen.png"
 alt="dump-tools aircraft seen" width="633" height="333" border="10" /></a>
-
+    
 * tracked with single position or unique tracked.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/tracksseen.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/tracksseen.png"
 alt="dump-tools tracks seen" width="633" height="333" border="10" /></a>
-
+   
 * main signal power and peak signal power.
 * messages > -3 dBFS per hour.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/signal.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/signal.png"
 alt="dump-tools signal power" width="633" height="333" border="10" /></a>
-
+   
 * range in kilometers.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/range.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/range.png"
 alt="dump-tools range view" width="633" height="333" border="10" /></a>
-
+   
 * cpu utalisation & temperature.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/cpu.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/cpu.png"
 alt="dump-tools cpu utilisation and temperature" width="633" height="333" border="10" /></a>
-
+   
 * disk & memory usage.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/space.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/space.png"
 alt="dump-tools disk and memory usage" width="633" height="333" border="10" /></a>
-
+   
 * disk IOPS & throughput.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/disk.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/disk.png"
 alt="dump-tools disk bandwidth" width="633" height="333" border="10" /></a>
-
+  
 * network interface IOPS & throughput.
-
+   
 <a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/network.png"
  target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/network.png"
 alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
-
-Available graphs:
-1 hour, 6 hour, 24 hour, 7 days, 14 days, 30 days, 90 days, 365 days
-
-# Manual installation. 
-
+  
+* Available graphs: 1 hour, 6 hour, 24 hour, 2 days, 3days, 7 days, 14 days, 30 days, 90 days, 365 days   
+* Automatic scaling graphs in the web web browser.   
+* Automatic web browser refresh every minute.  
+   
+## Manual installation. 
+  
 Install the collectd package:
 ````
 $ sudo apt-get install -y collectd
@@ -132,7 +148,7 @@ sudo /etc/init.d/lighttpd force-reload
 
 Finished!
 
-# Installation using installer.
+## Installation using installer.
 Download the [installer (dump1090-tools-install.sh)](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh) and launch it. The installer will:
 * Create directories (with the permissions of the parent directory).
 * Download the files and copy them with the correct permissions to the target directories.
@@ -163,7 +179,7 @@ Watch the installation video:
 
 [![dump-tools installation](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/youtube-dump-tools.png)](http://www.youtube.com/watch?v=f9nL8gxL388)
 
-# Testing and troubleshooting.
+## Testing and troubleshooting.
 
 Give collectd at least few minutes to collect some data. Check whether the rrd files (the round robin databases with collection data) are updated:
 ````
@@ -362,7 +378,7 @@ total 3164
 ````
 View the graphs in a web browser: http://ip address your dump1090/collectd
 
-# More info.
+## More info.
 
 http://discussions.flightaware.com/post166863.html#p166863
 
