@@ -21,7 +21,7 @@ Including a installer.
    
 <a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/week.png"
  target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/week.png"
-alt="dump-tools week view" width="633" height="333" border="10" /></a>
+alt="dump-tools week view" width="1200" height="600" border="10" /></a>
   
   
 Collects stats like:
