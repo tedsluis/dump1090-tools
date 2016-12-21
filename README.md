@@ -19,8 +19,8 @@ Based on https://github.com/mutability/dump1090-tools by Oliver Jowett <oliver@m
 Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware).
 Including a installer.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/week.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/week.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/week.png"
 alt="dump-tools week view" width="633" height="333" border="10" /></a>
   
   
@@ -28,58 +28,58 @@ Collects stats like:
 * number of local & remote messages received per second.
 * number of positions per hour.
     
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/message_rate.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/message_rate.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/message_rate.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/message_rate.png"
 alt="dump-tools message rate" width="633" height="333" border="10" /></a>
     
 * number of aircraft tracked with position, without position, with mlat.
 * percantage aircraft traked with position.
     
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/aircraftseen.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/aircraftseen.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/aircraftseen.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/aircraftseen.png"
 alt="dump-tools aircraft seen" width="633" height="333" border="10" /></a>
     
 * tracked with single position or unique tracked.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/tracksseen.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/tracksseen.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/tracksseen.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/tracksseen.png"
 alt="dump-tools tracks seen" width="633" height="333" border="10" /></a>
    
 * main signal power and peak signal power.
 * messages > -3 dBFS per hour.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/signal.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/signal.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/signal.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/signal.png"
 alt="dump-tools signal power" width="633" height="333" border="10" /></a>
    
 * range in kilometers.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/range.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/range.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/range.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/range.png"
 alt="dump-tools range view" width="633" height="333" border="10" /></a>
    
 * cpu utalisation & temperature.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/cpu.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/cpu.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/cpu.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/cpu.png"
 alt="dump-tools cpu utilisation and temperature" width="633" height="333" border="10" /></a>
    
 * disk & memory usage.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/space.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/space.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/space.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/space.png"
 alt="dump-tools disk and memory usage" width="633" height="333" border="10" /></a>
    
 * disk IOPS & throughput.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/disk.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/disk.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/disk.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/disk.png"
 alt="dump-tools disk bandwidth" width="633" height="333" border="10" /></a>
   
 * network interface IOPS & throughput.
    
-<a href="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/network.png"
- target="_blank"><img src="https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/network.png"
+<a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/network.png"
+ target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/network.png"
 alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
   
 * Available graphs: 1 hour, 6 hour, 24 hour, 2 days, 3days, 7 days, 14 days, 30 days, 90 days, 365 days   
@@ -177,7 +177,7 @@ Finished!
 
 Watch the installation video:
 
-[![dump-tools installation](https://dl.dropboxusercontent.com/u/17865731/dump1090-20150916/youtube-dump-tools.png)](http://www.youtube.com/watch?v=f9nL8gxL388)
+[![dump-tools installation](https://github.com/tedsluis/dump1090-tools/blob/master/img/youtube-dump-tools.png)](http://www.youtube.com/watch?v=f9nL8gxL388)
 
 ## Testing and troubleshooting.
 
