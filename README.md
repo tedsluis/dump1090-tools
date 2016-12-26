@@ -80,7 +80,19 @@ alt="dump-tools disk bandwidth" width="633" height="333" border="10" /></a>
    
 <a href="https://github.com/tedsluis/dump1090-tools/blob/master/img/network.png"
  target="_blank"><img src="https://github.com/tedsluis/dump1090-tools/blob/master/img/network.png"
+alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a> 
+  
+* Period button bar
+  
+<a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
+ target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
 alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
+  
+* Dump1090 hosts bar
+  
+<a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
+ target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
+alt="dump1090 hosts bar" /></a>
   
 * Available graphs: 1 hour, 6 hour, 24 hour, 2 days, 3days, 7 days, 14 days, 30 days, 90 days, 365 days   
 * Automatic scaling graphs in the web web browser.   
