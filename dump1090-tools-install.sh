@@ -167,6 +167,7 @@ GETFILE(){
 # Files will get the specified permissions.
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collectd.conf"        "/etc/collectd/collectd.conf"                       "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/index.html"           "/var/www/collectd/index.html"                      "644"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/default.css"          "/var/www/collectd/default.css"                     "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/jquery.js"            "/var/www/collectd/jquery.js"                       "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.db"          "/home/pi/dump-tools/collectd/dump1090.db"          "774"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py"          "/home/pi/dump-tools/collectd/dump1090.py"          "775"
