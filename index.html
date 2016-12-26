@@ -11,6 +11,8 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 //-->
 
 <html>
+	<!-- Stylesheet for buttons //-->
+	<link rel="stylesheet" href="default.css" type="text/css" />
 	<head>
 		<title> Collectd Dump1090 Graphs</title>
 		<script type="text/javascript" src="jquery.js"></script>
@@ -29,6 +31,7 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 				$("#net").attr("src", base_name +"-eth0-" + time_name + ".png");
 				$("#disk").attr("src", base_name +"-disk-" + time_name + ".png"); 
 			}
+			<!-- Refresh page every minute //-->
 			setInterval(function(){
 			    $('img').each(function() {
 			        var jqt = $(this);
@@ -46,34 +49,26 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 	<!-- Button bar //-->
 	<p>
 		<!-- Select period, button image created with https://dabuttonfactory.com/ //-->
-		<small>
-		<a href="#" onclick="switchView('1h')"  ><img src="image/button_hour.png"></a>
-     		<a href="#" onclick="switchView('6h')"  ><img src="image/button_6-hour.png"></a>
-	 	<a href="#" onclick="switchView('24h')" ><img src="image/button_day.png"></a> 
-		<a href="#" onclick="switchView('2d')"  ><img src="image/button_2day.png"></a> 
-		<a href="#" onclick="switchView('3d')"  ><img src="image/button_3day.png"></a> 
-		<a href="#" onclick="switchView('7d')"  ><img src="image/button_week.png"></a> 
-		<a href="#" onclick="switchView('14d')" ><img src="image/button_2week.png"></a> 
-		<a href="#" onclick="switchView('30d')" ><img src="image/button_month.png"></a> 
-		<a href="#" onclick="switchView('90d')" ><img src="image/button_quarter.png"></a> 
-		<a href="#" onclick="switchView('365d')"><img src="image/button_year.png"></a> 
+		<table>
+		<tr>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('1h')"   id="orange-button">hour</a>   </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('6h')"   id="orange-button">6 hour</a> </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('24h')"  id="orange-button">day</a>    </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('2d')"   id="orange-button">2 days</a> </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('3d')"   id="orange-button">3 days</a> </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('7d')"   id="orange-button">week</a>   </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('14d')"  id="orange-button">2 weeks</a></div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('30d')"  id="orange-button">month</a>  </div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('90d')"  id="orange-button">quarter</a></div></th>
+		<th><div class="orange-button-container"> <a href="#" onclick="switchView('365d')" id="orange-button">year</a>   </div></th>
 
-		<!-- Links to other dump1090 instances //-->
-		<span><a href="http://ted1090-1/collectd" title="http://ted1090-1/collectd (192.168.11.44)"><img src="image/button_ted1090-1-collectd.png"></a></span>
-		<span><a href="http://ted1090-1/dump1090" title="http://ted1090-1/dump1090 (192.168.11.44)"><img src="image/button_ted1090-1-dump.png"></a></span>
-		<span><a href="http://ted1090-2/collectd" title="http://ted1090-2/collectd (192.168.11.7)" ><img src="image/button_ted1090-2-collectd.png"></a></span>
-		<span><a href="http://ted1090-2/dump1090" title="http://ted1090-2/dump1090 (192.168.11.7)" ><img src="image/button_ted1090-2-dump.png"></a></span>
-		<span><a href="http://ted1090-3/collectd" title="http://ted1090-3/collectd (192.168.11.43)"><img src="image/button_ted1090-3-collectd.png"></a></span>
-		<span><a href="http://ted1090-3/dump1090" title="http://ted1090-3/dump1090 (192.168.11.43)"><img src="image/button_ted1090-3-dump.png"></a></span>
-		<span><a href="http://ted1090-4/collectd" title="http://ted1090-4/collectd (192.168.11.8)" ><img src="image/button_ted1090-4-collectd.png"></a></span>
-		<span><a href="http://ted1090-4/dump1090" title="http://ted1090-4/dump1090 (192.168.11.8)" ><img src="image/button_ted1090-4-dump.png"></a></span>
-		<span><a href="http://ted1090-5/collectd" title="http://ted1090-5/collectd (192.168.11.35)"><img src="image/button_ted1090-5-collectd.png"></a></span>
-		<span><a href="http://ted1090-5/dump1090" title="http://ted1090-5/dump1090 (192.168.11.35)"><img src="image/button_ted1090-5-dump.png"></a></span>
-		<span><a href="http://ted1090-6/collectd" title="http://ted1090-6/collectd (192.168.11.25)"><img src="image/button_ted1090-6-collectd.png"></a></span>
-		<span><a href="http://ted1090-6/dump1090" title="http://ted1090-6/dump1090 (192.168.11.25)"><img src="image/button_ted1090-6-dump.png"></a></span>
-		<span><a href="http://ted1090-7/collectd" title="http://ted1090-7/collectd (192.168.11.39)"><img src="image/button_ted1090-7-collectd.png"></a></span>
-		<span><a href="http://ted1090-7/dump1090" title="http://ted1090-7/dump1090 (192.168.11.39)"><img src="image/button_ted1090-7-dump.png"></a></span>
-		</small>
+<!-- START SECTION Links to other dump1090 instances //-->
+		<th><div class="red-button-container">  <a href="http://ted1090-1/collectd" title="http://ted1090-1/collectd (192.168.11.37)" id="red-button" >ted1090-1-collectd</a></div></th>
+		<th><div class="blue-button-container"> <a href="http://ted1090-1/dump1090" title="http://ted1090-1/dump1090 (192.168.11.37)" id="blue-button">ted1090-1-dump</a>    </div></th>
+<!-- END SECTION
+- Links to other dump1090 instances (leave the END SECTION commentline as it is to be sure the insert-hosts.sh script can delete and insert dump1090 hosts!) //-->
+		</tr>
+		</table>
 	</p>
 	<!-- Display picures, auto scaling//-->
         <div style="width: 100%; height: 32%;">
