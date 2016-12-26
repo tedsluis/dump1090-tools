@@ -172,6 +172,7 @@ GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump10
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py"          "/home/pi/dump-tools/collectd/dump1090.py"          "775"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh" "/home/pi/dump-tools/collectd/graphs-crontabjob.sh" "775"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-graphs.sh"       "/home/pi/dump-tools/collectd/make-graphs.sh"       "775"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/insert_hosts.sh"      "/home/pi/dump-tools/collectd/insert_hosts.sh"      "775"
 
 # Add graphs-crontabjob.sh to crontab
 echo "==============ADD TO CRONTAB:[graphs-crontabjob.sh]=============="
@@ -189,6 +190,10 @@ sudo echo '*/5 * * * * sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh >/
 echo "execute (root): sudo crontab /home/pi/dump-tools/crontab"
 sudo crontab "/home/pi/dump-tools/crontab"
 sudo rm "/home/pi/dump-tools/crontab"
+
+# Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds other dump1090 hosts to /var/www/collectd/index.html
+echo "==============UPDATE index.html=================================="
+/home/pi/dump-tools/collectd/insert_hosts.sh
 
 # Restart collectd to initialize /etc/collectd/collectd.conf
 echo "==============RESTART:[collectd]================================="
