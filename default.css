@@ -1,0 +1,117 @@
+#blue-button-container {
+}
+
+#blue-button {
+  border: solid #0000ff 2px;
+  background: #0000ff;
+  border-radius: 5px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0 0px 0 0 #b13f21;
+  -moz-box-shadow: 0 0px 0 0 #b13f21;
+  box-shadow: 0 0px 0 0 #b13f21;
+  -webkit-transition: .1s background-color linear;
+  -moz-transition: .1s background-color linear;
+  -o-transition: .1s background-color linear;
+  transition: .1s background-color linear;
+  padding: 2px 2px;
+  color: #ffffff;
+  border-color: #0000ff;
+  font-family: Calibri;
+  font-size: 9px;
+  font-style: normal;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#blue-button:hover {
+  background-color: #0066ff;
+  border: solid #0066ff 2px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0px 0 0 #b13f21;
+  -moz-box-shadow: 0 0px 0 0 #b13f21;
+  box-shadow: 0 0px 0 0 #b13f21;
+  -webkit-transition: .1s background-color linear;
+  -moz-transition: .1s background-color linear;
+  -o-transition: .1s background-color linear;
+  transition: .1s background-color linear;
+  color: #ffffff;
+}
+
+#orange-button-container {
+}
+
+#orange-button {
+  border: solid #ff6600 2px;
+  background: #ff6600;
+  border-radius: 5px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0 0px 0 0 #b13f21;
+  -moz-box-shadow: 0 0px 0 0 #b13f21;
+  box-shadow: 0 0px 0 0 #b13f21;
+  -webkit-transition: .1s background-color linear;
+  -moz-transition: .1s background-color linear;
+  -o-transition: .1s background-color linear;
+  transition: .1s background-color linear;
+  padding: 2px 2px;
+  color: #ffffff;
+  border-color: #ff6600;
+  font-family: Calibri;
+  font-size: 9px;
+  font-style: normal;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#orange-button:hover {
+  background-color: #ff8533;
+  border: solid #ff8533 2px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0px 0 0 #b13f21;
+  -moz-box-shadow: 0 0px 0 0 #b13f21;
+  box-shadow: 0 0px 0 0 #b13f21;
+  -webkit-transition: .1s background-color linear;
+  -moz-transition: .1s background-color linear;
+  -o-transition: .1s background-color linear;
+  transition: .1s background-color linear;
+  color: #ffffff;
+}
+
+#red-button-container {
+}
+
+#red-button {
+  border: solid #ff0000 2px;
+  background: #ff0000;
+  border-radius: 5px;
+  -moz-border-radius: 2px;
+  -webkit-box-shadow: 0 0px 0 0 #b13f21;
+  -moz-box-shadow: 0 0px 0 0 #b13f21;
+  box-shadow: 0 0px 0 0 #b13f21;
+  -webkit-transition: .1s background-color linear;
+  -moz-transition: .1s background-color linear;
+  -o-transition: .1s background-color linear;
+  transition: .1s background-color linear;
+  padding: 2px 2px;
+  color: #ffffff;
+  border-color: #ff0000;
+  font-family: Calibri;
+  font-size: 9px;
+  font-style: normal;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#red-button:hover {
+  background-color: #ff3333;
+  border: solid #ff3333 2px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0px 0 0 #b13f21;
+  -moz-box-shadow: 0 0px 0 0 #b13f21;
+  box-shadow: 0 0px 0 0 #b13f21;
+  -webkit-transition: .1s background-color linear;
+  -moz-transition: .1s background-color linear;
+  -o-transition: .1s background-color linear;
+  transition: .1s background-color linear;
+  color: #ffffff;
+}
+
