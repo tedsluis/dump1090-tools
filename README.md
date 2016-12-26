@@ -86,7 +86,7 @@ alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
   
 <a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
-alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
+alt="period bar"  /></a>
   
 * Dump1090 hosts bar
   
