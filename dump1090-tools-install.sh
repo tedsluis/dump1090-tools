@@ -194,7 +194,7 @@ sudo rm "/home/pi/dump-tools/crontab"
 
 # Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds other dump1090 hosts to /var/www/collectd/index.html
 echo "==============UPDATE index.html=================================="
-/home/pi/dump-tools/collectd/insert_hosts.sh
+sudo /home/pi/dump-tools/collectd/insert_hosts.sh
 
 # Restart collectd to initialize /etc/collectd/collectd.conf
 echo "==============RESTART:[collectd]================================="
