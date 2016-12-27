@@ -17,7 +17,7 @@ Based on https://github.com/mutability/dump1090-tools by Oliver Jowett <oliver@m
 ## Features  
   
 * Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware) and orange pi (armbian).
-* Including a installer.
+* Fully automated installer included.
    
 <a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/week.png"
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/week.png"
@@ -108,6 +108,7 @@ Download the files and copy them to the following directories:
 
 /var/www/collectd/
 * index.html
+* default.css
 * jquery.js
 
 /home/pi/dump-tools/collectd/
@@ -115,6 +116,7 @@ Download the files and copy them to the following directories:
 * dump1090.py
 * graphs-crontabjob.sh
 * make-graphs.sh
+* insert_hosts.sh
 
 ````
 $ sudo wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collectd.conf   -O /etc/collectd/collectd.conf
@@ -189,6 +191,12 @@ install ok installed 5.1.0-3
 Collect install ok installed 5.1.0-3
 etc........
 ````
+   
+Run the crontab scheduler when every you want to update your graphs manually:
+````
+sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh
+````
+    
 Finished!
 
 Watch the installation video:
