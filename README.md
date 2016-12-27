@@ -16,13 +16,12 @@ Based on https://github.com/mutability/dump1090-tools by Oliver Jowett <oliver@m
   
 ## Features  
   
-Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware).
-Including a installer.
+* Monitors Dump1090 Mutability running on raspberry pi (raspbian & piaware) and orange pi (armbian).
+* Including a installer.
    
 <a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/week.png"
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/week.png"
 alt="dump-tools week view" width="1200" height="600" border="10" /></a>
-  
   
 Collects stats like:
 * number of local & remote messages received per second.
@@ -82,22 +81,19 @@ alt="dump-tools disk bandwidth" width="633" height="333" border="10" /></a>
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/network.png"
 alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a> 
   
-* Period button bar
+* Period button bar. Available graphs: 1 hour, 6 hour, 24 hour, 2 days, 3days, 7 days, 14 days, 30 days, 90 days, 365 days. Automatic web browser refresh every minute without changing the graph interval to default.  
   
 <a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
 alt="period bar"  /></a>
   
-* Dump1090 hosts bar
+* Dump1090 hosts bar, automatitly dynamicly created. Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds or remove other dump1090 hosts to /var/www/collectd/index.html.
   
 <a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
 alt="dump1090 hosts bar" /></a>
   
-* Available graphs: 1 hour, 6 hour, 24 hour, 2 days, 3days, 7 days, 14 days, 30 days, 90 days, 365 days   
 * Automatic scaling graphs in the web web browser.   
-* Automatic web browser refresh every minute.  
-* Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds or remove other dump1090 hosts to /var/www/collectd/index.html.
    
 ## Manual installation. 
   
@@ -168,16 +164,17 @@ Finished!
 
 ## Installation using installer.
 Download the [installer (dump1090-tools-install.sh)](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090-tools-install.sh) and launch it. The installer will:
-* Create directories (with the permissions of the parent directory).
-* Download the files and copy them with the correct permissions to the target directories.
-* Create backup files whenever existing files are updated.
-* Run as 'pi' user and use 'root' whenever if needed.
-* Install 'collectd' and start it.
-* Add the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
+* Creates directories (with the permissions of the parent directory).
+* Downloads the files and copies them with the correct permissions to the target directories.
+* Creates backup files whenever existing files are updated.
+* Runs as 'pi' user and uses 'root' whenever if needed.
+* Installs 'collectd' and starts it.
+* Adds the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
 * A copy of the original crontab is saved.
-* Create graphs for the first time.
+* Creates graphs for the first time.
 * Looks for other dump1090 hosts in /etc/hosts and /home/pi/dump-tools/collectd/hosts and adds them to /var/www/collectd/index.html.
-* Change the web server root into /var/www and restart the web server.
+* Changes the web server root into /var/www and restart the web server.
+* The installer can be rerunned without any consequences. Previous configfiles will be saved in backup files.
 
 Perform the following steps to install the dump-tools:
 ````
