@@ -30,10 +30,29 @@ nowlit=`date '+%m/%d/%y %H:%M %Z'`;
 # Hostname
 H=`uname -n`;
 
+# Check if rrd files exits.
+checkrrd() {
+  NODATA=1
+  PICFILE=$1
+  shift
+  for RRDFILE in "$@"
+  do
+    if [ ! -f "$RRDFILE" ]; then
+      NODATA=0
+    fi
+  done
+  if [ ! -f "$PICFILE" ]; then
+    cp "/var/www/collectd/nodata.png" "$PICFILE"
+    echo "copy nodata to $PICFILE"
+  fi
+  return $NODATA
+}
+
 # Antenna range in kilometers.
 # Including a minimal and maximum range.
 metric_range_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "Antenna range" "$4" "$5"
+  if checkrrd "$1" "$2/dump1090_range-max_range.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -66,6 +85,7 @@ metric_range_graph() {
 # Signal power, peak signal power and >-3dBFS / hr (RHS).
 signal_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "Signal power" "$4" "$5"
+  if checkrrd "$1" "$2/dump1090_dbfs-signal.rrd" "$2/dump1090_dbfs-peak_signal.rrd" "$2/dump1090_messages-strong_signals.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -95,6 +115,7 @@ signal_graph() {
 # local messages received/sec, remote messages received/sec, position / hr (RHS).
 local_rate_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "messages" "$4" "$5"
+ if checkrrd "$1" "$2/dump1090_messages-local_accepted.rrd" "$2/dump1090_messages-remote_accepted.rrd" "$2/dump1090_messages-positions.rrd"; then echo "none" ; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -130,6 +151,7 @@ local_rate_graph() {
 # Aircraft tracked, aircraft with positions, aircraft with mlat, percentage with positions
 aircraft_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "Aircrafts" "$4" "$5"
+  if checkrrd "$1" "$2/dump1090_aircraft-recent.rrd" "$2/dump1090_mlat-recent.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -171,6 +193,7 @@ aircraft_graph() {
 # tracks with single message, unique tracks:STACK
 tracks_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "tracks" "$4" "$5"
+  if checkrrd "$1" "$2/dump1090_tracks-all.rrd" "$2/dump1090_tracks-single_message.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -194,6 +217,7 @@ tracks_graph() {
 # cpu usage USB, other and demodulator. cpu temp
 cpu_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "CPU usage" "$4" "$5"
+  if checkrrd "$1" "$2/dump1090_cpu-demod.rrd" "$2/dump1090_cpu-reader.rrd" "$2/dump1090_cpu-background.rrd" "/var/lib/collectd/rrd/localhost/table-rpi/gauge-cpu_temp.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -233,6 +257,7 @@ cpu_graph() {
 # Network traffic incomming, outgoining, errors
 net_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "Network IO" "$4" "$5"
+  if checkrrd "$1" "$2/if_octets.rrd" "$2/if_errors.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -269,6 +294,7 @@ net_graph() {
 # Disk space used and free.
 memory_graph() {
   printf "%15s - period=%4s - step=%5s - size=" "Memory usage" "$4" "$5"
+  if checkrrd "$1" "$2/memory-buffered.rrd" "$2/memory-cached.rrd" "$2/memory-free.rrd" "$2/memory-used.rrd" "/var/lib/collectd/rrd/localhost/df-root/df_complex-used.rrd" "/var/lib/collectd/rrd/localhost/df-root/df_complex-reserved.rrd" "/var/lib/collectd/rrd/localhost/df-root/df_complex-free.rrd"; then echo "none"; return; fi 
   rrdtool graph \
   "$1" \
   --start end-$4 \
@@ -310,6 +336,7 @@ memory_graph() {
 
 # Disk IO read and write / throughput read and write
 diskio_ops_graph() {
+  if checkrrd "$1" "$2/disk_ops.rrd" "$2/disk_octets.rrd"; then echo "none"; return; fi 
   printf "%15s - period=%4s - step=%5s - size=" "Disk IO" "$4" "$5"
   rrdtool graph \
   "$1" \
@@ -362,7 +389,7 @@ common_graphs() {
   metric_range_graph /var/www/collectd/dump1090-$2-range-$4.png  /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
   signal_graph       /var/www/collectd/dump1090-$2-signal-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
   local_rate_graph   /var/www/collectd/dump1090-$2-rate-$4.png   /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  net_graph          /var/www/collectd/dump1090-$2-eth0-$4.png   /var/lib/collectd/rrd/localhost/interface-eth0/ "$3" "$4" "$5"
+  net_graph          /var/www/collectd/dump1090-$2-eth0-$4.png   /var/lib/collectd/rrd/localhost/interface-eth0  "$3" "$4" "$5"
   memory_graph       /var/www/collectd/dump1090-$2-memory-$4.png /var/lib/collectd/rrd/$1/memory                 "$3" "$4" "$5"
   diskio_ops_graph   /var/www/collectd/dump1090-$2-disk-$4.png   /var/lib/collectd/rrd/$1/disk-mmcblk0           "$3" "$4" "$5"
 }
