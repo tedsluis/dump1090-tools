@@ -174,6 +174,7 @@ GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump10
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh" "/home/pi/dump-tools/collectd/graphs-crontabjob.sh" "775"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-graphs.sh"       "/home/pi/dump-tools/collectd/make-graphs.sh"       "775"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/insert_hosts.sh"      "/home/pi/dump-tools/collectd/insert_hosts.sh"      "775"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/nodata.png"           "/var/www/collectd/nodata.png"                      "644"
 
 # Add graphs-crontabjob.sh to crontab
 echo "==============ADD TO CRONTAB:[graphs-crontabjob.sh]=============="
