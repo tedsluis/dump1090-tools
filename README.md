@@ -93,8 +93,14 @@ alt="period bar"  /></a>
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
 alt="dump1090 hosts bar" /></a>
   
+* Display a 'no data' image when there is no RRD file.  
+  
+<a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/nodata.png"
+ target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/nodata.png"
+alt="No data" /></a>
+  
 * Automatic scaling graphs in the web web browser.   
-   
+ 
 ## Manual installation. 
   
 Install the collectd package:
