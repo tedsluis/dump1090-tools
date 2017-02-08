@@ -5,28 +5,25 @@
 # - create directories (with the permissions of the parent directory).
 # - download the files and copy them with the correct permissions to the target directories.
 # - create backup files whenever existing files are updated.
-# - run as 'pi' user and use 'root' whenever if needed.
+# - run as '$user' user and use 'root' whenever if needed.
 # - install 'collectd' and start it.
 # - add the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
 # - a copy of the original crontab is saved.
 # - create graphs for the first time.
 #
-# Must be launched as user 'pi',
-# or search 'n replaced with 'yourusername', e.g. via "nano dump1090-tools-install.sh" and Crtl+W (=Find) + Crtl+R (=Replace)
-# DO NOT USE "REPLACE ALL", as sometimes "pi" may occur in functions such as "exPIre" (expire)!
-# as well in collectd.conf, insert_hosts.sh, graphs-crontabjob.sh 
 #
 # By ted.sluis@gmail.com
 
-# Default user
-user="pi"
+# get username, exit if root (as whoami doesn't report username then)
+user=$(whoami)
+rootuser="root"
 
 # Test user.
-if [ "x${user}" = "x${USER}" ]; then
-	echo "This script is launched by user $USER."
-else 
-	echo "Error: This script should have been launch by user $user." 
+if [ "x${rootuser}" = "x${USER}" ]; then
+	echo "Error: This script should NOT be launched by user root."
 	exit 1;
+else
+	echo "This script is launched by user $USER."
 fi
 
 # Collectd installed?
@@ -67,7 +64,7 @@ CHANGEPERMISSIONS() {
 	permission=$2
 	owner=$3
 	group=$4
-	# get path permissions, owner and group. 
+	# get path permissions, owner and group.
 	pathpermission="$(stat --format '%a' "$path")"
 	pathowner="$(stat --format '%U' "$path")"
 	pathgroup="$(stat --format '%G' "$path")"
@@ -90,7 +87,7 @@ CHANGEPERMISSIONS() {
 		fi
 		if [ ! "x${pathgroup}" = "x${group}" ]; then
 			echo "execute (root): sudo chgrp $group $path (owner=$owner)"
-                	sudo chgrp $group $path 
+                	sudo chgrp $group $path
 		fi
 	fi
 }
@@ -152,7 +149,7 @@ GETFILE(){
 			echo "execute ($USER): mv $targetfile $targetfile.$now"
 			mv $targetfile "$targetfile.$now"
 		fi
-		CHANGEPERMISSIONS "$targetfile.$now" "$permission" "$owner" "$group" 
+		CHANGEPERMISSIONS "$targetfile.$now" "$permission" "$owner" "$group"
 	fi
 	# use root privilege to download file from web to the target location if the current directory is not writable.
 	if [ ! -w "$directory" ]; then
@@ -172,33 +169,40 @@ GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collec
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/index.html"           "/var/www/collectd/index.html"                      "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/default.css"          "/var/www/collectd/default.css"                     "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/jquery.js"            "/var/www/collectd/jquery.js"                       "644"
-GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.db"          "/home/pi/dump-tools/collectd/dump1090.db"          "774"
-GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py"          "/home/pi/dump-tools/collectd/dump1090.py"          "775"
-GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh" "/home/pi/dump-tools/collectd/graphs-crontabjob.sh" "775"
-GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-graphs.sh"       "/home/pi/dump-tools/collectd/make-graphs.sh"       "775"
-GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/insert_hosts.sh"      "/home/pi/dump-tools/collectd/insert_hosts.sh"      "775"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.db"          "/home/$user/dump-tools/collectd/dump1090.db"          "774"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py"          "/home/$user/dump-tools/collectd/dump1090.py"          "775"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh" "/home/$user/dump-tools/collectd/graphs-crontabjob.sh" "775"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-graphs.sh"       "/home/$user/dump-tools/collectd/make-graphs.sh"       "775"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/insert_hosts.sh"      "/home/$user/dump-tools/collectd/insert_hosts.sh"      "775"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/nodata.png"           "/var/www/collectd/nodata.png"                      "644"
+
+#Replace username pi with actual username
+finduser="/home/pi"
+replaceuser="/home/$user"
+sudo sed -i "s/$finduser/$replaceuser/g" /etc/collectd/collectd.conf
+sudo sed -i "s/$finduser/$replaceuser/g" /home/$user/dump-tools/collectd/graphs-crontabjob.sh
+sudo sed -i "s/$finduser/$replaceuser/g" /home/$user/dump-tools/collectd/insert_hosts.sh
 
 # Add graphs-crontabjob.sh to crontab
 echo "==============ADD TO CRONTAB:[graphs-crontabjob.sh]=============="
-echo "execute (root): sudo crontab -l > /home/pi/dump-tools/crontab.$now"
-sudo touch "/home/pi/dump-tools/crontab.$now"
-CHANGEPERMISSIONS "/home/pi/dump-tools/crontab.$now" "666" "pi" "pi"
-sudo crontab -l > "/home/pi/dump-tools/crontab.$now"
-echo "execute (root): sudo cp /home/pi/dump-tools/crontab.$now /home/pi/dump-tools/crontab"
-sudo cp "/home/pi/dump-tools/crontab.$now" "/home/pi/dump-tools/crontab"
-CHANGEPERMISSIONS "/home/pi/dump-tools/crontab" "666" "pi" "pi"
-echo "execute (root): sed -i '/graphs-crontabjob.sh/d' /home/pi/dump-tools/crontab"
-sudo sed -i '/graphs-crontabjob.sh/d' "/home/pi/dump-tools/crontab"
-echo "execute (root): sudo echo '*/5 * * * * sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh >/dev/null' >> /home/pi/dump-tools/crontab"
-sudo echo '*/5 * * * * sudo /home/pi/dump-tools/collectd/graphs-crontabjob.sh >/dev/null' >> "/home/pi/dump-tools/crontab"
-echo "execute (root): sudo crontab /home/pi/dump-tools/crontab"
-sudo crontab "/home/pi/dump-tools/crontab"
-sudo rm "/home/pi/dump-tools/crontab"
+echo "execute (root): sudo crontab -l > /home/$user/dump-tools/crontab.$now"
+sudo touch "/home/$user/dump-tools/crontab.$now"
+CHANGEPERMISSIONS "/home/$user/dump-tools/crontab.$now" "666" "$user" "$user"
+sudo crontab -l > "/home/$user/dump-tools/crontab.$now"
+echo "execute (root): sudo cp /home/$user/dump-tools/crontab.$now /home/$user/dump-tools/crontab"
+sudo cp "/home/$user/dump-tools/crontab.$now" "/home/$user/dump-tools/crontab"
+CHANGEPERMISSIONS "/home/$user/dump-tools/crontab" "666" "$user" "$user"
+echo "execute (root): sed -i '/graphs-crontabjob.sh/d' /home/$user/dump-tools/crontab"
+sudo sed -i '/graphs-crontabjob.sh/d' "/home/$user/dump-tools/crontab"
+echo "execute (root): sudo echo '*/5 * * * * sudo /home/$user/dump-tools/collectd/graphs-crontabjob.sh >/dev/null' >> /home/$user/dump-tools/crontab"
+sudo echo '*/5 * * * * sudo /home/$user/dump-tools/collectd/graphs-crontabjob.sh >/dev/null' >> "/home/$user/dump-tools/crontab"
+echo "execute (root): sudo crontab /home/$user/dump-tools/crontab"
+sudo crontab "/home/$user/dump-tools/crontab"
+sudo rm "/home/$user/dump-tools/crontab"
 
-# Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds other dump1090 hosts to /var/www/collectd/index.html
+# Reads /etc/hosts and /home/$user/dump-tools/collectd/hosts and then adds other dump1090 hosts to /var/www/collectd/index.html
 echo "==============UPDATE index.html=================================="
-sudo /home/pi/dump-tools/collectd/insert_hosts.sh
+sudo /home/$user/dump-tools/collectd/insert_hosts.sh
 
 # Restart collectd to initialize /etc/collectd/collectd.conf
 echo "==============RESTART:[collectd]================================="
@@ -206,7 +210,7 @@ sudo /etc/init.d/collectd restart
 
 # create graphs for the first time
 echo "==============CREATE GRAPHS======================================"
-/home/pi/dump-tools/collectd/graphs-crontabjob.sh
+/home/$user/dump-tools/collectd/graphs-crontabjob.sh
 
 # Edit /etc/lighttpd/lighttpd.conf, change /var/www/html into /var/www
 echo "==============EDIT:[/etc/lighttpd/lighttpd.conf]================="
@@ -217,4 +221,3 @@ sudo sed -i 's/server.document-root.*/server.document-root        = \"\/var\/www
 echo "==============RELOAD:[lighttpd]=================================="
 echo "execute (root): sudo /etc/init.d/lighttpd force-reload"
 sudo /etc/init.d/lighttpd force-reload
-
