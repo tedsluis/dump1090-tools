@@ -177,11 +177,10 @@ GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/insert
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/nodata.png"           "/var/www/collectd/nodata.png"                      "644"
 
 #Replace username pi with actual username
-finduser="/home/pi"
-replaceuser="/home/$user"
-sudo sed -i "s/$finduser/$replaceuser/g" /etc/collectd/collectd.conf
-sudo sed -i "s/$finduser/$replaceuser/g" /home/$user/dump-tools/collectd/graphs-crontabjob.sh
-sudo sed -i "s/$finduser/$replaceuser/g" /home/$user/dump-tools/collectd/insert_hosts.sh
+rp_str="s#/home/pi#/home/$user#g"
+sudo sed -i $rp_str /etc/collectd/collectd.conf
+sudo sed -i $rp_str /home/$user/dump-tools/collectd/graphs-crontabjob.sh
+sudo sed -i $rp_str /home/$user/dump-tools/collectd/insert_hosts.sh
 
 # Add graphs-crontabjob.sh to crontab
 echo "==============ADD TO CRONTAB:[graphs-crontabjob.sh]=============="
