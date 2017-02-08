@@ -12,6 +12,7 @@
 # - create graphs for the first time.
 #
 # Must be launched as user 'pi'.
+# (or search 'n replace pi with yourusername, e.g. via "nano dump1090-tools-install.sh" and Crtl+W (=Find) + Crtl+R (=Replace)
 #
 # By ted.sluis@gmail.com
 
