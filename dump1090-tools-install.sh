@@ -11,8 +11,10 @@
 # - a copy of the original crontab is saved.
 # - create graphs for the first time.
 #
-# Must be launched as user 'pi'.
-# (or search 'n replace pi with yourusername, e.g. via "nano dump1090-tools-install.sh" and Crtl+W (=Find) + Crtl+R (=Replace)
+# Must be launched as user 'pi',
+# or search 'n replaced with 'yourusername', e.g. via "nano dump1090-tools-install.sh" and Crtl+W (=Find) + Crtl+R (=Replace)
+# DO NOT USE "REPLACE ALL", as sometimes "pi" may occur in functions such as "exPIre" (expire)!
+# as well in collectd.conf, insert_hosts.sh, graphs-crontabjob.sh 
 #
 # By ted.sluis@gmail.com
 
