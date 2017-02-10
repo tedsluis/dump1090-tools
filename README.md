@@ -213,7 +213,7 @@ Watch the installation video:
 
 Give collectd at least few minutes to collect some data. Check whether the rrd files (the round robin databases with collection data) are updated:
 ````
-pi@ted1090-4 ~/dump-tools/collectd $ ll -R /var/lib/collectd/rrd/* | grep rrd
+pi@ted1090-4 ~/dump-tools/collectd $ ls -lR /var/lib/collectd/rrd/* | grep rrd
 /var/lib/collectd/rrd/localhost:
 /var/lib/collectd/rrd/localhost/df-root:
 -rw-r--r-- 1 root root 154692 Jan 18 11:03 df_complex-free.rrd
@@ -311,7 +311,7 @@ not expired dump1090*365d.png   step=86400   expired=18701   expired_after=28800
 
 View the graphs in the '/var/www/collectd' directory:
 ````
-pi@ted1090-4 ~/dump-tools/collectd $ ll /var/www/collectd/
+pi@ted1090-4 ~/dump-tools/collectd $ ls -l /var/www/collectd/
 total 3164
 -rw-r--r-- 1 root root 48404 Jan 18 11:00 dump1090-rpi-acs-14d.png
 -rw-r--r-- 1 root root 35932 Jan 18 11:00 dump1090-rpi-acs-1h.png
