@@ -175,7 +175,7 @@ Download the [installer (dump1090-tools-install.sh)](https://raw.githubuserconte
 * Creates directories (with the permissions of the parent directory).
 * Downloads the files and copies them with the correct permissions to the target directories.
 * Creates backup files whenever existing files are updated.
-* Runs as 'pi' user and uses 'root' whenever if needed.
+* Runs as user (example:pi) and uses 'root' whenever if needed.
 * Installs 'collectd' and starts it.
 * Adds the 'graphs-crontabjob.sh' script to crontab (scheduled every 5 minutes).
 * A copy of the original crontab is saved.
