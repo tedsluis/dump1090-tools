@@ -180,6 +180,8 @@ GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/collec
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/index.html"           "/var/www/collectd/index.html"                      "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/default.css"          "/var/www/collectd/default.css"                     "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/jquery.js"            "/var/www/collectd/jquery.js"                       "644"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/lightbox.min.js"      "/var/www/collectd/lightbox.min.js"                 "644"
+GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/lightbox.min.css"     "/var/www/collectd/lightbox.min.css"                "644"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.db"          "/home/$user/dump-tools/collectd/dump1090.db"          "774"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py"          "/home/$user/dump-tools/collectd/dump1090.py"          "775"
 GETFILE "https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh" "/home/$user/dump-tools/collectd/graphs-crontabjob.sh" "775"
