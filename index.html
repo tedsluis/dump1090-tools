@@ -13,14 +13,16 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 <html>
 	<!-- Stylesheet for buttons //-->
 	<link rel="stylesheet" href="default.css" type="text/css" />
+	<link rel="stylesheet" href="lightbox.min.css" type="text/css" />
 	<head>
 		<title> Collectd Dump1090 Graphs</title>
 		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="lightbox.min.js"></script>
 		<script type="text/javascript">
 			var base_name = "dump1090-rpi";
 		
-			function switchView(time_name){
-				<!-- Compose picture names //-->
+			function switchView(time_name){ 
+				<!-- Compose preview picture names //-->
 				$("#rate").attr("src", base_name + "-rate-" + time_name + ".png");
 				$("#acs").attr("src", base_name + "-acs-" + time_name + ".png");
 				$("#cpu").attr("src", base_name + "-cpu-" + time_name + ".png");
@@ -29,7 +31,20 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 				$("#mem").attr("src", base_name + "-memory-" + time_name + ".png");
 				$("#signal").attr("src", base_name + "-signal-" + time_name + ".png");
 				$("#net").attr("src", base_name +"-eth0-" + time_name + ".png");
+				/*$("#net").attr("src", base_name +"-wlan0-" + time_name + ".png");*/
 				$("#disk").attr("src", base_name +"-disk-" + time_name + ".png"); 
+				
+				<!-- Compose lightbox picture names //-->
+				$("#lb-rate").attr("href", base_name + "-rate-" + time_name + ".png");
+				$("#lb-acs").attr("href", base_name + "-acs-" + time_name + ".png");
+				$("#lb-cpu").attr("href", base_name + "-cpu-" + time_name + ".png");
+				$("#lb-tracks").attr("href", base_name + "-tracks-" + time_name + ".png");
+				$("#lb-range").attr("href", base_name + "-range-" + time_name + ".png");
+				$("#lb-mem").attr("href", base_name + "-memory-" + time_name + ".png");
+				$("#lb-signal").attr("href", base_name + "-signal-" + time_name + ".png");
+				$("#lb-net").attr("href", base_name +"-eth0-" + time_name + ".png");
+				/*$("#lb-net").attr("href", base_name +"-wlan0-" + time_name + ".png");*/
+				$("#lb-disk").attr("href", base_name +"-disk-" + time_name + ".png"); 
 			}
 			<!-- Refresh page every minute //-->
 			setInterval(function(){
@@ -72,19 +87,37 @@ Based on https://github.com/mutability/dump1090-tools, Copyright (c) 2015, Olive
 	</p>
 	<!-- Display picures, auto scaling//-->
         <div style="width: 100%; height: 32%;">
-                <img id="cpu"    width="33%" height="100%" src="dump1090-rpi-cpu-24h.png">
-                <img id="rate"   width="33%" height="100%" src="dump1090-rpi-rate-24h.png">
-                <img id="signal" width="33%" height="100%" src="dump1090-rpi-signal-24h.png">
+                <a id="lb-cpu" href="dump1090-rpi-cpu-24h.png" data-lightbox="collectd" data-title="CPU usage statistics">
+					<img id="cpu"    width="33%" height="100%" src="dump1090-rpi-cpu-24h.png">
+				</a>
+				<a id="lb-rate" href="dump1090-rpi-rate-24h.png" data-lightbox="collectd" data-title="ADS-B message rate">
+					<img id="rate"   width="33%" height="100%" src="dump1090-rpi-rate-24h.png">
+				</a>
+				<a id="lb-signal" href="dump1090-rpi-signal-24h.png" data-lightbox="collectd" data-title="ADS-B signal">
+					<img id="signal" width="33%" height="100%" src="dump1090-rpi-signal-24h.png">
+				</a>
         </div>
         <div style="width: 100%; height: 32%;">
-                <img id="mem"    width="33%" height="100%" src="dump1090-rpi-memory-24h.png">
-                <img id="acs"    width="33%" height="100%" src="dump1090-rpi-acs-24h.png">
-                <img id="range"  width="33%" height="100%" src="dump1090-rpi-range-24h.png">
+                <a id="lb-mem" href="dump1090-rpi-memory-24h.png" data-lightbox="collectd" data-title="ADS-B memory & disk space">
+					<img id="mem"    width="33%" height="100%" src="dump1090-rpi-memory-24h.png">
+				</a>
+				<a id="lb-acs" href="dump1090-rpi-acs-24h.png" data-lightbox="collectd" data-title="ADS-B aircraft seen">
+					<img id="acs"    width="33%" height="100%" src="dump1090-rpi-acs-24h.png">
+				</a>
+				<a id="lb-range" href="dump1090-rpi-range-24h.png" data-lightbox="collectd" data-title="Max range">
+					<img id="range"  width="33%" height="100%" src="dump1090-rpi-range-24h.png">
+				</a>
         </div>
         <div style="width: 100%; height: 32%;">
-                <img id="net"    width="33%" height="100%" src="dump1090-rpi-eth0-24h.png">
-                <img id="tracks" width="33%" height="100%" src="dump1090-rpi-tracks-24h.png">
-                <img id="disk"   width="33%" height="100%" src="dump1090-rpi-disk-24h.png">
+                <a id="lb-net" href="dump1090-rpi-eth0-24h.png" data-lightbox="collectd" data-title="ADS-B bandwidth">
+					<img id="net"    width="33%" height="100%" src="dump1090-rpi-eth0-24h.png">
+				</a>
+				<a id="lb-tracks" href="dump1090-rpi-tracks-24h.png" data-lightbox="collectd" data-title="ADS-B tracks seen">
+					<img id="tracks" width="33%" height="100%" src="dump1090-rpi-tracks-24h.png">
+				</a>
+				<a id="lb-disk" href="dump1090-rpi-disk-24h.png" data-lightbox="collectd" data-title="ADS-B IOPS / bandwidth">
+					<img id="disk"   width="33%" height="100%" src="dump1090-rpi-disk-24h.png">
+				</a>
         </div>
 	</body>
 </html>
