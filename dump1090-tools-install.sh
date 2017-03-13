@@ -35,6 +35,7 @@ if [[ $check =~ ok ]]; then
 else
         sudo apt-get install -y collectd
 fi
+
 # RRDTOOL installed?
 echo "==============INSTALL:[rrdtool]================================="
 check=$(dpkg-query -W -f='${Status} ${Version}\n' rrdtool)
@@ -43,6 +44,16 @@ if [[ $check =~ ok ]]; then
         echo "rrdtool $check"
 else
         sudo apt-get install -y rrdtool
+fi
+
+# lighttpd installed?
+echo "==============INSTALL:[lighttpd]================================="
+check=$(dpkg-query -W -f='${Status} ${Version}\n' lighttpd)
+echo $check
+if [[ $check =~ ok ]]; then
+        echo "lighttpd $check"
+else
+        sudo apt-get install -y lighttpd
 fi
 
 # Pyton2.7 installed?
