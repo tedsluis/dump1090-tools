@@ -403,7 +403,7 @@ common_graphs_preview() {
   metric_range_graph /var/www/collectd/dump1090-$2-range-preview-$4.png  /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
   signal_graph       /var/www/collectd/dump1090-$2-signal-preview-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
   local_rate_graph   /var/www/collectd/dump1090-$2-rate-preview-$4.png   /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
-  net_graph          /var/www/collectd/dump1090-$2-wlan0-preview-$4.png  /var/lib/collectd/rrd/localhost/interface-wlan0  "$3" "$4" "$5" "$6" "$7"
+  net_graph          /var/www/collectd/dump1090-$2-eth0-preview-$4.png  /var/lib/collectd/rrd/localhost/interface-eth0  "$3" "$4" "$5" "$6" "$7"
   memory_graph       /var/www/collectd/dump1090-$2-memory-preview-$4.png /var/lib/collectd/rrd/$1/memory                 "$3" "$4" "$5" "$6" "$7"
   diskio_ops_graph   /var/www/collectd/dump1090-$2-disk-preview-$4.png   /var/lib/collectd/rrd/$1/disk-mmcblk0           "$3" "$4" "$5" "$6" "$7"
 }
