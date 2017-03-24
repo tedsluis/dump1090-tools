@@ -100,6 +100,12 @@ alt="dump1090 hosts bar" /></a>
 alt="No data" /></a>
   
 * Automatic scaling graphs in the web web browser.   
+   
+* Lightbox intergration (by osmanovv)  
+  
+<a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/img/lightboxview.png"
+ target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/img/lightboxview.png"
+alt="Lightbox view" /></a>
  
 ## Manual installation. 
   

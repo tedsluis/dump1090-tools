@@ -21,8 +21,10 @@
 renice -n 5 -p $$
 
 # Graph width x height
-WIDTH="630"
-HEIGHT="300"
+FULL_WIDTH="1200"
+FULL_HEIGHT="768"
+PREVIEW_WIDTH="630"
+PREVIEW_HEIGHT="300"
 
 # watermark (in the bottum of the graph)
 nowlit=`date '+%m/%d/%y %H:%M %Z'`;
@@ -56,8 +58,8 @@ metric_range_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - max range - $4" \
   --vertical-label "kilometers" \
@@ -89,8 +91,8 @@ signal_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 signal - $4" \
   --vertical-label "dBFS" \
@@ -119,8 +121,8 @@ local_rate_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title " $H - $3 message rate - $4" \
   --vertical-label "messages/second" \
@@ -155,8 +157,8 @@ aircraft_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 aircraft seen - $4" \
   --vertical-label "aircraft" \
@@ -197,8 +199,8 @@ tracks_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 tracks seen - $4" \
   --vertical-label "tracks/hour" \
@@ -221,8 +223,8 @@ cpu_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 CPU % and temperature - $4" \
   --vertical-label "CPU %" \
@@ -261,8 +263,8 @@ net_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 Bandwidth - eth0 - $4" \
   --vertical-label "bytes/sec" \
@@ -298,8 +300,8 @@ memory_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 Memory & Disk Space (/) - $4" \
   --vertical-label "Disk Space" \
@@ -341,8 +343,8 @@ diskio_ops_graph() {
   rrdtool graph \
   "$1" \
   --start end-$4 \
-  --width $WIDTH \
-  --height $HEIGHT \
+  --width "$6" \
+  --height "$7" \
   --step "$5" \
   --title "$H - $3 IOPS / Bandwidth - $4" \
   --vertical-label "IOPS" \
@@ -383,20 +385,33 @@ diskio_ops_graph() {
 }
 
 common_graphs() {
-  aircraft_graph     /var/www/collectd/dump1090-$2-acs-$4.png    /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  cpu_graph          /var/www/collectd/dump1090-$2-cpu-$4.png    /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  tracks_graph       /var/www/collectd/dump1090-$2-tracks-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  metric_range_graph /var/www/collectd/dump1090-$2-range-$4.png  /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  signal_graph       /var/www/collectd/dump1090-$2-signal-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  local_rate_graph   /var/www/collectd/dump1090-$2-rate-$4.png   /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5"
-  net_graph          /var/www/collectd/dump1090-$2-eth0-$4.png   /var/lib/collectd/rrd/localhost/interface-eth0  "$3" "$4" "$5"
-  memory_graph       /var/www/collectd/dump1090-$2-memory-$4.png /var/lib/collectd/rrd/$1/memory                 "$3" "$4" "$5"
-  diskio_ops_graph   /var/www/collectd/dump1090-$2-disk-$4.png   /var/lib/collectd/rrd/$1/disk-mmcblk0           "$3" "$4" "$5"
+  aircraft_graph     /var/www/collectd/dump1090-$2-acs-$4.png    /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  cpu_graph          /var/www/collectd/dump1090-$2-cpu-$4.png    /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  tracks_graph       /var/www/collectd/dump1090-$2-tracks-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  metric_range_graph /var/www/collectd/dump1090-$2-range-$4.png  /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  signal_graph       /var/www/collectd/dump1090-$2-signal-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  local_rate_graph   /var/www/collectd/dump1090-$2-rate-$4.png   /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  net_graph          /var/www/collectd/dump1090-$2-eth0-$4.png   /var/lib/collectd/rrd/localhost/interface-eth0  "$3" "$4" "$5" "$6" "$7"
+  memory_graph       /var/www/collectd/dump1090-$2-memory-$4.png /var/lib/collectd/rrd/$1/memory                 "$3" "$4" "$5" "$6" "$7"
+  diskio_ops_graph   /var/www/collectd/dump1090-$2-disk-$4.png   /var/lib/collectd/rrd/$1/disk-mmcblk0           "$3" "$4" "$5" "$6" "$7"
+}
+
+common_graphs_preview() {
+  aircraft_graph     /var/www/collectd/dump1090-$2-acs-preview-$4.png    /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  cpu_graph          /var/www/collectd/dump1090-$2-cpu-preview-$4.png    /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  tracks_graph       /var/www/collectd/dump1090-$2-tracks-preview-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  metric_range_graph /var/www/collectd/dump1090-$2-range-preview-$4.png  /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  signal_graph       /var/www/collectd/dump1090-$2-signal-preview-$4.png /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  local_rate_graph   /var/www/collectd/dump1090-$2-rate-preview-$4.png   /var/lib/collectd/rrd/$1/dump1090-$2            "$3" "$4" "$5" "$6" "$7"
+  net_graph          /var/www/collectd/dump1090-$2-eth0-preview-$4.png  /var/lib/collectd/rrd/localhost/interface-eth0   "$3" "$4" "$5" "$6" "$7"
+  memory_graph       /var/www/collectd/dump1090-$2-memory-preview-$4.png /var/lib/collectd/rrd/$1/memory                 "$3" "$4" "$5" "$6" "$7"
+  diskio_ops_graph   /var/www/collectd/dump1090-$2-disk-preview-$4.png   /var/lib/collectd/rrd/$1/disk-mmcblk0           "$3" "$4" "$5" "$6" "$7"
 }
 
 # receiver_graphs host shortname longname period step
 receiver_graphs() {
-  common_graphs "$1" "$2" "$3" "$4" "$5"
+  common_graphs "$1" "$2" "$3" "$4" "$5" "$FULL_WIDTH" "$FULL_HEIGHT"
+  common_graphs_preview "$1" "$2" "$3" "$4" "$5" "$PREVIEW_WIDTH" "$PREVIEW_HEIGHT"
 }
 
 period="$1"
