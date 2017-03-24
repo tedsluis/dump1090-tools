@@ -103,8 +103,8 @@ alt="No data" /></a>
    
 * Lightbox intergration (by osmanovv)  
   
-<a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/img/lightboxview.png"
- target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/img/lightboxview.png"
+<a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/lightboxview.png"
+ target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/lightboxview.png"
 alt="Lightbox view" /></a>
  
 ## Manual installation. 
