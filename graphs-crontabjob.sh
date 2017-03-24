@@ -17,13 +17,13 @@ RefreshGraph(){
 
         # Look for previous created file(s):
         filemask="dump1090*$period.png"
-        file=$(find /var/www/collectd/ -name $filemask | head -n 1)
+        file=$(find /var/www/collectd/ -name $filemask -printf "%T+\t%p\n" | sort -r | head -n 1 | awk '{print $2}')
 
         # Create file if not exists or refresh file when is to old.
         if [ -z "$file" ]; then
                 printf "create      %17s   step=%5s\n" "$filemask"  "$step"
         else
-		expire=$(expr $((`stat --format=%Y $file`)) - $(( `date +%s` - $seconds )))
+                expire=$(expr $((`stat --format=%Y $file`)) - $(( `date +%s` - $seconds )))
                 if [ -f $file ] && [ $expire -le 0 ]; then
                         printf "refresh     %17s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
                 else
@@ -31,7 +31,7 @@ RefreshGraph(){
                                 printf "create      %17s   step=%5s   file does not exists?!\n" "$filemask" "$step"
                         else
                                 printf "not expired %17s   step=%5s   expired=%5s   expired_after=%5s\n" "$filemask" "$step" "$expire" "$seconds"
-				return
+                                return
                         fi
                 fi
         fi
