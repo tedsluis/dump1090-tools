@@ -21,9 +21,9 @@
 renice -n 5 -p $$
 
 # Graph width x height
-FULL_WIDTH="1024"
+FULL_WIDTH="1200"
 FULL_HEIGHT="768"
-PREVIEW_WIDTH="400"
+PREVIEW_WIDTH="630"
 PREVIEW_HEIGHT="300"
 
 # watermark (in the bottum of the graph)
