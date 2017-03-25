@@ -87,11 +87,26 @@ alt="dump-tools network bandwidth" width="633" height="333" border="10" /></a>
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/period_bar.png"
 alt="period bar"  /></a>
   
-* Dump1090 hosts bar, automatitly dynamicly created. Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds or remove other dump1090 hosts to /var/www/collectd/index.html.
+* Dump1090 hosts bar, automatitly dynamicly created. Reads /etc/hosts and /home/pi/dump-tools/collectd/hosts and then adds or removes other dump1090 hosts to /var/www/collectd/index.html.
   
 <a href="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
  target="_blank"><img src="https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/dump1090_hosts_bar.png"
-alt="dump1090 hosts bar" /></a>
+alt="dump1090 hosts bar" /></a>  
+Just run the [dump1090-tools-install.sh](https://github.com/tedsluis/dump1090-tools/blob/master/dump1090-tools-install.sh) or [insert_hosts.sh](https://github.com/tedsluis/dump1090-tools/blob/master/insert_hosts.sh).
+````
+192.168.11.80  msi msi -----> 192.168.11.80, msi, dump=000, collectd=000, No dump1090 or collectd hosts...
+192.168.11.38  nasted -----> 192.168.11.38, nasted, dump=404, collectd=404, No dump1090 or collectd hosts...
+192.168.11.100 nuc -----> 192.168.11.100, nuc, dump=000, collectd=000, No dump1090 or collectd hosts...
+192.168.11.27  pavilion -----> 192.168.11.27, pavilion, dump=000, collectd=000, No dump1090 or collectd hosts...
+192.168.11.172 ted1090-1 -----> 192.168.11.172, ted1090-1, dump=200, collectd=200, ted1090-1 (192.168.11.172) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.176 ted1090-2 -----> 192.168.11.176, ted1090-2, dump=200, collectd=200, ted1090-2 (192.168.11.176) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.171 ted1090-3 -----> 192.168.11.171, ted1090-3, dump=200, collectd=200, ted1090-3 (192.168.11.171) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.178 ted1090-4 -----> 192.168.11.178, ted1090-4, dump=200, collectd=200, ted1090-4 (192.168.11.178) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.174 ted1090-5 -----> 192.168.11.174, ted1090-5, dump=200, collectd=200, ted1090-5 (192.168.11.174) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.175 ted1090-6 -----> 192.168.11.175, ted1090-6, dump=200, collectd=200, ted1090-6 (192.168.11.175) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.177 ted1090-7 -----> 192.168.11.177, ted1090-7, dump=200, collectd=200, ted1090-7 (192.168.11.177) were reconfigured /home/pi/dump-tools/collectd/hosts.
+192.168.11.1   WRT-bachstraat20 -----> 192.168.11.1, WRT-bachstraat20, dump=404, collectd=404, No dump1090 or collectd hosts...
+````
   
 * Display a 'no data' image when there is no RRD file.  
   
