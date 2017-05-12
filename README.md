@@ -237,7 +237,7 @@ Watch the installation video:
   
 ## Modification when you use wireless instead of ethernet.  
   
-When you use wlan (wireless internet) everythings works exept the network interface. Therefor you have to ake some changes, which means basicly that you have to replace the name of the ethernet interface "eth0" to the name of the wireless interface "wlan0" in a couple of files and then restart the collectd daemon. It is very easy to acomplish using the following commands:
+When you use wlan (wireless internet) everythings works exept the network interface. Therefor you have to make some changes, which means basicly that you have to replace the name of the ethernet interface "eth0" to the name of the wireless interface "wlan0" in a couple of files and then restart the collectd daemon. It is very easy to acomplish using the following commands:
 
 ````
 pi@ted1090-4 ~ $ sudo sed -i "s/eth0/wlan0/g" /home/pi/dump-tools/collectd/make-graphs.sh
