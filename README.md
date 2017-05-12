@@ -7,6 +7,7 @@
       * [Features](#features)
       * [Manual installation.](#manual-installation)
       * [Installation using installer.](#installation-using-installer)
+      * [Modification when you use wireless instead of ethernet.](#modification-when-you-use-wireless-instead-of-ethernet)
       * [Testing and troubleshooting.](#testing-and-troubleshooting)
       * [More info.](#more-info)
    
@@ -232,6 +233,18 @@ Finished!
 Watch the installation video:
 
 [![dump-tools installation](https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/img/youtube-dump-tools.png)](http://www.youtube.com/watch?v=f9nL8gxL388)
+  
+## Modification when you use wireless instead of ethernet.  
+  
+When you use wlan (wireless internet) everythings works exept the network interface. Therefor you have to ake some changes, which means basicly that you have to replace the name of the ethernet interface "eth0" to the name of the wireless interface "wlan0" in a couple of files and then restart the collectd daemon. It is very easy to acomplish using the following commands:
+
+````
+pi@ted1090-4 ~ $ sudo sed -i "s/eth0/wlan0/g" /home/pi/dump-tools/collectd/make-graphs.sh
+pi@ted1090-4 ~ $ sudo sed -i "s/eth0/wlan0/g" /var/www/collectd/index.html 
+pi@ted1090-4 ~ $ sudo sed -i "s/eth0/wlan0/g" /etc/collectd/collectd.conf
+pi@ted1090-4 ~ $ sudo /etc/init.d/collectd restart
+````
+After a while the wlan0 statistics will show up...
 
 ## Testing and troubleshooting.
 
