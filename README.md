@@ -158,6 +158,7 @@ $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090
 $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/dump1090.py           -O /home/pi/dump-tools/collectd/dump1090.py
 $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/graphs-crontabjob.sh  -O /home/pi/dump-tools/collectd/graphs-crontabjob.sh
 $ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/make-graphs.sh        -O /home/pi/dump-tools/collectd/make-graphs.sh
+$ wget https://raw.githubusercontent.com/tedsluis/dump1090-tools/master/insert_hosts.sh       -O /home/pi/dump-tools/collectd/insert_hosts.sh
 ````
 
 Set execute permission on scripts:
@@ -168,7 +169,7 @@ Start the collection deamon:
 ````
 $ sudo /etc/init.d/collectd restart
 ````
-Look for other dump1090 hosts in /etc/hosts and /home/pi/dump-tool/collectd/hosts and add then to /var/www/collectd/index.html:
+Look for other dump1090 hosts in /etc/hosts and /home/pi/dump-tool/collectd/hosts and add them to /var/www/collectd/index.html:
 ````
 # sudo /home/pi/dump-tools/collectd/insert_hosts.sh
 ````
